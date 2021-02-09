@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ADS_JOBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ADS_Master_User">
+    <Key>
+      <PropertyRef Name="Mem_ID" />
+    </Key>
+    <Property Name="Mem_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mem_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Mem_User" Type="varchar" MaxLength="50" />
+    <Property Name="Mem_Pass" Type="varchar" MaxLength="50" />
+    <Property Name="Mem_Des" Type="varchar" MaxLength="50" />
+    <Property Name="Mem_Status" Type="varchar" MaxLength="10" />
+    <Property Name="Create_By" Type="varchar" MaxLength="10" />
+    <Property Name="Create_Date" Type="varchar" MaxLength="50" />
+    <Property Name="Update_Date" Type="varchar" MaxLength="50" />
+    <Property Name="Code_Mem" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mem_Change_Process" Type="varchar" MaxLength="10" />
+    <Property Name="Mem_Close_wo" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ADS_PostJob">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JOB_Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="JOB_Location" Type="nvarchar" MaxLength="50" />
+    <Property Name="JOB_Region" Type="nvarchar" MaxLength="50" />
+    <Property Name="JOB_Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="JOB_Description" Type="text" />
+    <Property Name="JOB_Requirement" Type="text" />
+    <Property Name="Option_Chevron" Type="varchar" MaxLength="2" />
+    <Property Name="Option_Adisorn" Type="varchar" MaxLength="2" />
+    <Property Name="OPtion_Others" Type="varchar" MaxLength="2" />
+    <Property Name="Company_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Featured_Image" Type="nvarchar" MaxLength="50" />
+    <Property Name="Logo_Image" Type="nvarchar" MaxLength="50" />
+    <Property Name="User" Type="nvarchar" MaxLength="20" />
+    <Property Name="JOB_CreateDate" Type="datetime2" Precision="6" />
+    <Property Name="JOB_UpdateDate" Type="datetime2" Precision="6" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="Experience" Type="nvarchar" MaxLength="50" />
+    <Property Name="Salary" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="ADS_JOBModelStoreContainer">
+    <EntitySet Name="ADS_Master_User" EntityType="Self.ADS_Master_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ADS_PostJob" EntityType="Self.ADS_PostJob" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

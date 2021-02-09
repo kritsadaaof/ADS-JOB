@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ADS_JOBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADS_Master_User">
+    <Key>
+      <PropertyRef Name="Mem_ID" />
+    </Key>
+    <Property Name="Mem_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Mem_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mem_User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mem_Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mem_Des" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mem_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Create_By" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Create_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Update_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Code_Mem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mem_Change_Process" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Mem_Close_wo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ADS_PostJob">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JOB_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="JOB_Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="JOB_Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="JOB_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="JOB_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="JOB_Requirement" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Option_Chevron" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Option_Adisorn" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="OPtion_Others" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Company_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Featured_Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Logo_Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="JOB_CreateDate" Type="DateTime" Precision="6" />
+    <Property Name="JOB_UpdateDate" Type="DateTime" Precision="6" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Experience" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADS_Master_User" EntityType="Self.ADS_Master_User" />
+    <EntitySet Name="ADS_PostJob" EntityType="Self.ADS_PostJob" />
+  </EntityContainer>
+</Schema>

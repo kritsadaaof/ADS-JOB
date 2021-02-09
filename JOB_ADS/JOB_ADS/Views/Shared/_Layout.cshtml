@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Adisorn SKL-Job</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Free-Template.co" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon.ico">
+    <link rel="stylesheet" href="~/Content/css/custom-bs.css">
+    <link rel="stylesheet" href="~/Content/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="~/Content/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/Content/fonts/line-icons/style.css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/animate.min.css">
+    <link rel="stylesheet" href="~/Content/css/quill.snow.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+    @Scripts.Render("~/bundles/jquery")     <!--เรียกใช้งาน "~/Scripts/jquery-{version}.js" เพื่อให้ JS ของแต่ละ Page ทำงาน-->
+    <!-- notification CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/notification/notification.css">
+
+</head>
+<body id="top">
+
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+
+    <div class="site-wrap">
+
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div> <!-- .site-mobile-menu -->
+        <!-- NAVBAR -->
+        <header class="site-navbar mt-3">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="site-logo col-6"><a href="#"><img src="~/Content/images/logo.png" alt="" style="height:57PX" /></a></div>
+
+                    <nav class="mx-auto site-navigation">
+                        <ul class="site-menu d-none d-xl-block ml-0 pl-0">
+                            <li><a href="~/Home/Index" class="btn btn-outline-white text-white nav-link btn-Menu">Home</a></li>
+
+                            <li class="has-children">
+                                <a class="btn btn-outline-white text-white nav-link btn-Menu" href="#">Jobs</a>
+                                <ul class="dropdown">
+                                    <li><a href="~/Home/JobList?JOB=">Job Listings</a></li>
+                                    <li><a href="~/PostJob/Post_Job">Job by Categories</a></li>
+                                    @if (Session["User"] != null)
+                                    {
+                                        <li><a href="~/Account/EditJOB">Edit Job</a></li>
+                                    }
+                                </ul>
+                            </li>
+                            <li><a href="#" class="btn btn-outline-white text-white nav-link btn-Menu">About Us</a></li>
+                        </ul>
+                        <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0 ">
+                            <li class="d-xl-none"><a href="~/Home/Index" class="">Home</a></li>
+                            <li class="d-xl-none has-children">
+                                <a href="#">Jobs</a>
+                                <ul class="dropdown">
+                                    <li><a href="~/Home/JobList?JOB=">Job Listings</a></li>
+                                    <li><a href="~/PostJob/Post_Job">Job by Categories</a></li>
+                                    @if (Session["User"] != null)
+                                    {
+                                        <li><a href="~/Account/EditJOB">Edit Job</a></li>
+                                    }
+                                </ul>
+                            </li>
+                            <li id="M_IN_OUT" class="d-xl-none">
+                                @if (Session["User"] == null)
+                                {
+                                    <a href="~/Account/Login">
+                                        Log IN
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="~/Account/LogOut">
+                                        Log Out
+                                    </a>
+                                }
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+                        <div class="ml-auto">
+                             @if (Session["User"] == null)
+                            {
+                                <a id="PC_IN_OUT" href="~/Account/Login" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a>
+                            }
+                            else
+                            {
+                                <a id="PC_IN_OUT" href="~/Account/LogOut" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log Out</a>
+                            }
+                        </div>
+                        <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- HOME -->
+        <div class="">
+
+            @RenderBody()
+        </div>
+
+        <footer class="site-footer">
+
+            <a href="#top" class="smoothscroll scroll-top">
+                <span class="icon-keyboard_arrow_up"></span>
+            </a>
+
+            <div class="container ">
+                <h1 style="color:white">Contact Us</h1>
+                <div class="row mb-5">
+
+
+                    <div class="col-6 col-md-3 mb-4 mb-md-0">
+                        <h4 style="color:white">Songkhla</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">39/15 Soi 29 Karnjanavanich Road, Muang Songkhla,</a></li>
+                            <li><a href="#">Songkhla,Thailand</a></li>
+                            <li><a href="#">Tel: +66 (0) 74 30 2500 to 5</a></li>
+                            <li><a href="#">Fax: +66 (0) 74 30 2510</a></li>
+                            <li><a href="#">E-mail: adi@adisorn-skl.com</a></li>
+                        </ul>
+                    </div> <div class="col-6 col-md-3 mb-4 mb-md-0">
+                        <h4 style="color:white">Nakhon Si Thammarat</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">61/26, Ek Nakhon Road, Tambon Thawang, Amphur Muang,</a></li>
+                            <li><a href="#">Nakhon Si Thammarat 80000, Thailand</a></li>
+                            <li><a href="#">Tel: +66 (0) 75 358 452</a></li>
+                            <li><a href="#">Fax: +66 (0) 75 358 453</a></li>
+                            <li><a href="#">E-mail: adi@adisorn-skl.com</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-6 col-md-3 mb-4 mb-md-0">
+                        <h4 style="color:white">Connect with us on</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#"><img src="~/Content/images/facebook.jpg" alt="" style="height:65PX" /></a></li> 
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-12">
+                        <p class="copyright">
+                            <small>
+                                Copyright &copy; Designed & Developed by <a href="https://www.pdcable.com/en/home-2/">IT</a> 2020
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/js/isotope.pkgd.min.js"></script>
+    <script src="~/Contenttent/js/stickyfill.min.js"></script>
+    <script src="~/Content/js/jquery.fancybox.min.js"></script>
+    <script src="~/Content/js/jquery.easing.1.3.js"></script>
+
+    <script src="~/Content/js/jquery.waypoints.min.js"></script>
+    <script src="~/Content/js/jquery.animateNumber.min.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/quill.min.js"></script>
+
+    <script src="~/Content/js/bootstrap-select.min.js"></script>
+
+    <script src="~/Content/js/custom.js"></script>
+    <!--  notification JS
+           ============================================ -->
+    <script src="~/Content/js/notification/bootstrap-growl.min.js"></script>
+
+    <script type="text/javascript">
+        var baseUrl = "@Url.Content("~")";
+    </script>
+
+</body>
+</html>

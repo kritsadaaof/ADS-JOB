@@ -1,0 +1,251 @@
+﻿@{
+    ViewBag.Title = "EditJOB";
+}
+@Scripts.Render("~/AccountEditJOB/js")
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('../Content/images/hero_1.jpg');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">Job List</h1>
+                <div class="custom-breadcrumbs">
+                    <a href="~/Home/Index">Home</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>Job List</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section" id="GropEdit" style="display:none">
+    <div class="container">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <div class="d-flex align-items-center">
+                    <div>
+                        <h2>Edit Job</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="row">
+                    <div class="col-6">
+                        <a id="Clear" href="~/Account/EditJOB" class="btn btn-block btn-light btn-md"><span class="icon-clear_all mr-2"></span>Clear</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#" id="SavePostjobEdit" class="btn btn-block btn-primary btn-md"><span class="icon-save mr-2"></span>Save Job</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <i id="ID" hidden></i>
+            <div class="col-lg-12">
+                <form class="p-4 p-md-5 border rounded" method="post">
+                    <h4 class="text-black mb-5 border-bottom pb-2">Job Details</h4>
+
+                    <div class="form-group" hidden>
+                        <label for="company-website-tw d-block">Upload Featured Image</label> <br>
+                        <label class="btn btn-primary btn-md btn-file">
+                            <span class="icon-picture-o mr-2"></span>
+                            Browse File<input type="file">
+                        </label>
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" placeholder="you@yourdomain.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="job-title">Job Title</label><i style="color:red">**</i>
+                        <input type="text" class="form-control" id="job-title" placeholder="e.g. Product Designer">
+                    </div>
+                    <div class="form-group">
+                        <label for="job-location">Location</label><i style="color:red">**</i>
+                        <input type="text" class="form-control" id="job-location" placeholder="e.g. สงขลา">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="job-location">Experience</label>
+                        <input type="text" class="form-control" id="Experience" placeholder="Experience">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-location">Salary</label>
+                        <input type="text" class="form-control" id="Salary" placeholder="Salary">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-location">Gender</label><span style="color:seagreen"> [ <i id="GenderDT"></i> ]</span>
+                                                                <select class="selectpicker border rounded" id="Gender" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Gender">
+                                                                    <option value="Male">Male</option>
+                                                                    <option value="Female">Female</option>
+                                                                    <option value="Male/Female">Male/Female</option>
+                                                                </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-region">Job Region</label><span style="color:seagreen"> [ <i id="RegionDT"></i> ]</span>
+                        <select class="selectpicker border rounded" id="job-region" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Region">
+                            <option>สงขลา</option>
+                            <option>กรุงเทพ</option>
+                            <option>ระยอง</option>
+                            <option>กำแพงเพชร</option>
+                            <option>ขอนแก่น</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-type">Job Type</label><span style="color:seagreen"> [ <i id="job-typeDT"></i> ]</span>
+                        <select class="selectpicker border rounded" id="job-type" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Job Type">
+                            <option>Part Time</option>
+                            <option>Full Time</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="job-description">Job Description</label><i style="color:red">**</i>
+                        <textarea type="text" rows="5" class="form-control" id="Job-description" placeholder="Write Job Description!"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-description">Job Requirement</label><i style="color:red">**</i>
+                        <textarea type="text" rows="5" class="form-control" id="Job-requirement" placeholder="Write Job Requirement!"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Option</label><i style="color:red">**</i> <br />
+
+                        <label class="col-xl-3 col-lg-4  col-md-4">
+                            <input id="OPhev" type="checkbox" class="" value="">
+                            <i>Existing Chevron Employee</i>
+                        </label>
+                        <label class="col-xl-3 col-lg-4  col-md-4">
+                            <input id="OPAds" type="checkbox" class="" value="">
+                            <i>HOL Adisorn Employee</i>
+                        </label>
+                        <label class="col-xl-3 col-lg-4  col-md-4">
+                            <input id="OPOth" type="checkbox" class="" value="">
+                            <i>Others (General Job Seekers)</i>
+                        </label>
+                    </div>
+
+                    <h4 class="text-black my-5 border-bottom pb-2">Company Details</h4>
+                    <div class="form-group">
+                        <label for="company-name">Company Name</label>
+                        <input type="text" class="form-control" id="company-name" placeholder="e.g. Adisorn">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-description">Status</label> 
+                        <label class="col-xl-3 col-lg-4  col-md-4">
+                            <input id="Status" type="checkbox" class="" value="">
+                            <i>Active</i>
+                        </label>
+                    </div>
+
+
+                </form>
+                <div class="form-group">
+                    <label for="company-website-tw d-block">Upload Logo</label> <br>
+                    <form class="btn btn-primary btn-md btn-file" id="formUP" enctype="multipart/form-data">
+                        <span class="icon-picture-o mr-2"></span>
+                        Browse File<input type="file" name="file" id="ImgUplode" />
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row align-items-center mb-5" hidden>
+            <div class="col-lg-4 ml-auto">
+                <div class="row">
+                    <div class="col-6">
+                        <a href="~/PostJob/Post_Job" class="btn btn-block btn-light btn-md"><span class="icon-clear_all mr-2"></span>Clear</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#" class="btn btn-block btn-primary btn-md"><span class="icon-save mr-2"></span>Save Job</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="site-section">
+    <div class="container">
+
+        <div class="row mb-5 justify-content-center">
+            <div class="col-md-7 text-center">
+                <h5 class="section-title mb-2">@ViewBag.PostListEdit.Count Job Listed</h5>
+            </div>
+        </div>
+
+        <ul class="job-listings mb-1">
+
+            @if (ViewBag.PostListEdit.Count != 0)
+            {
+                foreach (var PostJob in ViewBag.PostListEdit)
+                {
+                    <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+                        <a class="LINK" href="#" id="@PostJob.ID"></a>
+
+                        <div class="job-listing-logo" hidden>
+                            <img src="~/Content/images/LOGO/@PostJob.Logo_Image" alt="No Logo" class="img-fluid">
+                        </div>
+
+                        <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                                <h2>@PostJob.JOB_Title</h2>
+                                <strong>Update: @PostJob.JOB_UpdateDate</strong><br />
+                                @if (@PostJob.Status == "T")
+                                {
+                                    <strong>Status: <i style="color:lightgreen">Enable</i></strong>
+                                }
+                                @if (@PostJob.Status == "F")
+                                {
+                                    <strong>Status: <i style="color:chocolate">Disable</i></strong>
+                                }
+                            <br />  <strong>@PostJob.Company_Name</strong>
+                            </div> <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+                                <span class="icon-check"> Experience: @PostJob.Experience</span><br />
+                                <span class="icon-check"> Salary: @PostJob.Salary</span><br />
+                                <span class="icon-check"> Gender: @PostJob.Gender</span><br />
+                            </div>
+                                   <div class="job-listing-meta">
+                                       @if (@PostJob.JOB_Type == "Part Time")
+                                       {<span class="badge badge-danger">@PostJob.JOB_Type</span>}
+
+                                       @if (@PostJob.JOB_Type == "Full Time")
+                                       {<span class="badge badge-success" style="background-color:#2114c4">@PostJob.JOB_Type</span>}
+                                   </div>
+                        </div>
+                    </li>
+
+                }
+            }
+        </ul>
+
+        <div class="row pagination-wrap" hidden>
+            <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
+                <span>Showing 1-10 Of @ViewBag.PostListEdit.Count Jobs</span>
+            </div>
+            <div class="col-md-6 text-center text-md-right">
+                <div class="custom-pagination ml-auto">
+                    <a href="#" class="prev">Prev</a>
+                    <div class="d-inline-block">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                    </div>
+                    <a href="#" class="next">Next</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

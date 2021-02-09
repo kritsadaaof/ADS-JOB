@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ADS_JOBModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ADS_Master_User">
+      <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Master_User">
+        <MappingFragment StoreEntitySet="ADS_Master_User">
+          <ScalarProperty Name="Mem_ID" ColumnName="Mem_ID" />
+          <ScalarProperty Name="Mem_Name" ColumnName="Mem_Name" />
+          <ScalarProperty Name="Mem_User" ColumnName="Mem_User" />
+          <ScalarProperty Name="Mem_Pass" ColumnName="Mem_Pass" />
+          <ScalarProperty Name="Mem_Des" ColumnName="Mem_Des" />
+          <ScalarProperty Name="Mem_Status" ColumnName="Mem_Status" />
+          <ScalarProperty Name="Create_By" ColumnName="Create_By" />
+          <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+          <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+          <ScalarProperty Name="Code_Mem" ColumnName="Code_Mem" />
+          <ScalarProperty Name="Mem_Change_Process" ColumnName="Mem_Change_Process" />
+          <ScalarProperty Name="Mem_Close_wo" ColumnName="Mem_Close_wo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADS_PostJob">
+      <EntityTypeMapping TypeName="ADS_JOBModel.ADS_PostJob">
+        <MappingFragment StoreEntitySet="ADS_PostJob">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="JOB_Title" ColumnName="JOB_Title" />
+          <ScalarProperty Name="JOB_Location" ColumnName="JOB_Location" />
+          <ScalarProperty Name="JOB_Region" ColumnName="JOB_Region" />
+          <ScalarProperty Name="JOB_Type" ColumnName="JOB_Type" />
+          <ScalarProperty Name="JOB_Description" ColumnName="JOB_Description" />
+          <ScalarProperty Name="JOB_Requirement" ColumnName="JOB_Requirement" />
+          <ScalarProperty Name="Option_Chevron" ColumnName="Option_Chevron" />
+          <ScalarProperty Name="Option_Adisorn" ColumnName="Option_Adisorn" />
+          <ScalarProperty Name="OPtion_Others" ColumnName="OPtion_Others" />
+          <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+          <ScalarProperty Name="Featured_Image" ColumnName="Featured_Image" />
+          <ScalarProperty Name="Logo_Image" ColumnName="Logo_Image" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="JOB_CreateDate" ColumnName="JOB_CreateDate" />
+          <ScalarProperty Name="JOB_UpdateDate" ColumnName="JOB_UpdateDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Experience" ColumnName="Experience" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

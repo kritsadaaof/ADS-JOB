@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "Post_JOB";
+}
+@Scripts.Render("~/PostJob/js")
+
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('../Content/images/hero_1.jpg');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">Post A Job</h1>
+                <div class="custom-breadcrumbs">
+                    <a href="~/Home/Index">Home</a> <span class="mx-2 slash">/</span>
+                    <a href="#">Job</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>Post a Job</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section">
+    <div class="container">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <div class="d-flex align-items-center">
+                    <div>
+                        <h2>Post A Job</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="row">
+                    <div class="col-6">
+                        <a id="Clear" href="~/PostJob/Post_Job" class="btn btn-block btn-light btn-md"><span class="icon-clear_all mr-2"></span>Clear</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#" id="SavePostjob" class="btn btn-block btn-primary btn-md"><span class="icon-save mr-2"></span>Save Job</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <form class="p-4 p-md-5 border rounded" method="post">
+                    <h4 class="text-black mb-5 border-bottom pb-2">Job Details</h4>
+
+                    <div class="form-group" hidden>
+                        <label for="company-website-tw d-block">Upload Featured Image</label> <br>
+                        <label class="btn btn-primary btn-md btn-file">
+                            <span class="icon-picture-o mr-2"></span>
+                            Browse File<input type="file">
+                        </label>
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" placeholder="you@yourdomain.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="job-title">Job Title</label><i style="color:red">**</i>
+                        <input type="text" class="form-control" id="job-title" placeholder="e.g. Product Designer">
+                    </div>
+                    <div class="form-group">
+                        <label for="job-location">Location</label><i style="color:red">**</i>
+                        <input type="text" class="form-control" id="job-location" placeholder="e.g. สงขลา">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="job-location">Experience</label>
+                        <input type="text" class="form-control" id="Experience" placeholder="Experience">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-location">Salary</label>
+                        <input type="text" class="form-control" id="Salary" placeholder="Salary">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-location">Gender</label>
+                        <select class="selectpicker border rounded" id="Gender" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Region">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Male/Female</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-region">Job Region</label><i style="color:red">**</i>
+                        <select class="selectpicker border rounded" id="job-region" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Region">
+                            <option>สงขลา</option>
+                            <option>กรุงเทพ</option>
+                            <option>ระยอง</option>
+                            <option>กำแพงเพชร</option>
+                            <option>ขอนแก่น</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-type">Job Type</label><i style="color:red">**</i>
+                        <select class="selectpicker border rounded" id="job-type" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Job Type">
+                            <option>Part Time</option>
+                            <option>Full Time</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="job-description">Job Description</label><i style="color:red">**</i>
+                        <textarea type="text" rows="5" class="form-control" id="Job-description" placeholder="Write Job Description!"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-description">Job Requirement</label><i style="color:red">**</i>
+                        <textarea type="text" rows="5" class="form-control" id="Job-requirement" placeholder="Write Job Requirement!"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Option</label><i style="color:red">**</i> <br />
+
+                        <label class="col-xl-3 col-lg-4  col-md-4">
+                            <input id="OPhev" type="checkbox" class="" value="">
+                            <i>Existing Chevron Employee</i>
+                        </label>
+                        <label class="col-xl-3 col-lg-4  col-md-4">
+                            <input id="OPAds" type="checkbox" class="" value="">
+                            <i>HOL Adisorn Employee</i>
+                        </label>
+                        <label class="col-xl-3 col-lg-4  col-md-4">
+                            <input id="OPOth" type="checkbox" class="" value="">
+                            <i>Others (General Job Seekers)</i>
+                        </label>
+                    </div>
+
+
+                    <h4 class="text-black my-5 border-bottom pb-2">Company Details</h4>
+                    <div class="form-group">
+                        <label for="company-name">Company Name</label>
+                        <input type="text" class="form-control" id="company-name" placeholder="e.g. Adisorn">
+                    </div>
+
+
+
+
+
+                </form>
+                <div class="form-group">
+                    <label for="company-website-tw d-block">Upload Logo</label> <br>
+                    <form class="btn btn-primary btn-md btn-file" id="formUP" enctype="multipart/form-data">
+                        <span class="icon-picture-o mr-2"></span>
+                        Browse File<input type="file" name="file" id="ImgUplode" />
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row align-items-center mb-5" hidden>
+            <div class="col-lg-4 ml-auto">
+                <div class="row">
+                    <div class="col-6">
+                        <a href="~/PostJob/Post_Job" class="btn btn-block btn-light btn-md"><span class="icon-clear_all mr-2"></span>Clear</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#" class="btn btn-block btn-primary btn-md"><span class="icon-save mr-2"></span>Save Job</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

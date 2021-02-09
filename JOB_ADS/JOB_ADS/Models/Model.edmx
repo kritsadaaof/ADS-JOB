@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ADS_JOBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADS_Master_User">
+          <Key>
+            <PropertyRef Name="Mem_ID" />
+          </Key>
+          <Property Name="Mem_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mem_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Mem_User" Type="varchar" MaxLength="50" />
+          <Property Name="Mem_Pass" Type="varchar" MaxLength="50" />
+          <Property Name="Mem_Des" Type="varchar" MaxLength="50" />
+          <Property Name="Mem_Status" Type="varchar" MaxLength="10" />
+          <Property Name="Create_By" Type="varchar" MaxLength="10" />
+          <Property Name="Create_Date" Type="varchar" MaxLength="50" />
+          <Property Name="Update_Date" Type="varchar" MaxLength="50" />
+          <Property Name="Code_Mem" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mem_Change_Process" Type="varchar" MaxLength="10" />
+          <Property Name="Mem_Close_wo" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ADS_PostJob">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JOB_Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="JOB_Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="JOB_Region" Type="nvarchar" MaxLength="50" />
+          <Property Name="JOB_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="JOB_Description" Type="text" />
+          <Property Name="JOB_Requirement" Type="text" />
+          <Property Name="Option_Chevron" Type="varchar" MaxLength="2" />
+          <Property Name="Option_Adisorn" Type="varchar" MaxLength="2" />
+          <Property Name="OPtion_Others" Type="varchar" MaxLength="2" />
+          <Property Name="Company_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Featured_Image" Type="nvarchar" MaxLength="50" />
+          <Property Name="Logo_Image" Type="nvarchar" MaxLength="50" />
+          <Property Name="User" Type="nvarchar" MaxLength="20" />
+          <Property Name="JOB_CreateDate" Type="datetime2" Precision="6" />
+          <Property Name="JOB_UpdateDate" Type="datetime2" Precision="6" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Experience" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salary" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="ADS_JOBModelStoreContainer">
+          <EntitySet Name="ADS_Master_User" EntityType="Self.ADS_Master_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADS_PostJob" EntityType="Self.ADS_PostJob" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ADS_JOBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADS_Master_User">
+          <Key>
+            <PropertyRef Name="Mem_ID" />
+          </Key>
+          <Property Name="Mem_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mem_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mem_User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mem_Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mem_Des" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mem_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Create_By" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Create_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Update_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code_Mem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mem_Change_Process" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Mem_Close_wo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ADS_PostJob">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JOB_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JOB_Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JOB_Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JOB_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JOB_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JOB_Requirement" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option_Chevron" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Option_Adisorn" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="OPtion_Others" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Company_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Featured_Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Logo_Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="JOB_CreateDate" Type="DateTime" Precision="6" />
+          <Property Name="JOB_UpdateDate" Type="DateTime" Precision="6" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADS_Master_User" EntityType="Self.ADS_Master_User" />
+          <EntitySet Name="ADS_PostJob" EntityType="Self.ADS_PostJob" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ADS_JOBModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="ADS_Master_User">
+            <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Master_User">
+              <MappingFragment StoreEntitySet="ADS_Master_User">
+                <ScalarProperty Name="Mem_ID" ColumnName="Mem_ID" />
+                <ScalarProperty Name="Mem_Name" ColumnName="Mem_Name" />
+                <ScalarProperty Name="Mem_User" ColumnName="Mem_User" />
+                <ScalarProperty Name="Mem_Pass" ColumnName="Mem_Pass" />
+                <ScalarProperty Name="Mem_Des" ColumnName="Mem_Des" />
+                <ScalarProperty Name="Mem_Status" ColumnName="Mem_Status" />
+                <ScalarProperty Name="Create_By" ColumnName="Create_By" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+                <ScalarProperty Name="Code_Mem" ColumnName="Code_Mem" />
+                <ScalarProperty Name="Mem_Change_Process" ColumnName="Mem_Change_Process" />
+                <ScalarProperty Name="Mem_Close_wo" ColumnName="Mem_Close_wo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADS_PostJob">
+            <EntityTypeMapping TypeName="ADS_JOBModel.ADS_PostJob">
+              <MappingFragment StoreEntitySet="ADS_PostJob">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JOB_Title" ColumnName="JOB_Title" />
+                <ScalarProperty Name="JOB_Location" ColumnName="JOB_Location" />
+                <ScalarProperty Name="JOB_Region" ColumnName="JOB_Region" />
+                <ScalarProperty Name="JOB_Type" ColumnName="JOB_Type" />
+                <ScalarProperty Name="JOB_Description" ColumnName="JOB_Description" />
+                <ScalarProperty Name="JOB_Requirement" ColumnName="JOB_Requirement" />
+                <ScalarProperty Name="Option_Chevron" ColumnName="Option_Chevron" />
+                <ScalarProperty Name="Option_Adisorn" ColumnName="Option_Adisorn" />
+                <ScalarProperty Name="OPtion_Others" ColumnName="OPtion_Others" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+                <ScalarProperty Name="Featured_Image" ColumnName="Featured_Image" />
+                <ScalarProperty Name="Logo_Image" ColumnName="Logo_Image" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="JOB_CreateDate" ColumnName="JOB_CreateDate" />
+                <ScalarProperty Name="JOB_UpdateDate" ColumnName="JOB_UpdateDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
