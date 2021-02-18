@@ -129,15 +129,23 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DeviceGroupViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageCandidatesController.cs" />
     <Compile Include="Controllers\PostJobController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADS_Master_Department.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ADS_Master_User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ADS_PostJob.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADS_Register.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model.Context.cs">
@@ -383,6 +391,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ManageCandidates\js_FindByDepart.js" />
+    <Content Include="Scripts\ManageCandidates\js_ManageCandidates.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\PostJob\js_Postjob.js" />
     <Content Include="Web.config" />
@@ -404,6 +414,10 @@
     <Content Include="Views\Home\JobList.cshtml" />
     <Content Include="Views\Home\JobSingle.cshtml" />
     <Content Include="Views\Account\EditJOB.cshtml" />
+    <Content Include="Views\ManageCandidates\Manage_Candidates.cshtml" />
+    <Content Include="Views\ManageCandidates\FindByDepart.cshtml" />
+    <Content Include="Views\ManageCandidates\FindByCandidates.cshtml" />
+    <Content Include="Views\ManageCandidates\CandidatesDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

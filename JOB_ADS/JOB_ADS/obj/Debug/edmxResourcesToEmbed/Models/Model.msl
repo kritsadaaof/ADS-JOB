@@ -1,6 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ADS_JOBModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ADS_Master_Department">
+      <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Master_Department">
+        <MappingFragment StoreEntitySet="ADS_Master_Department">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Department_Code" ColumnName="Department_Code" />
+          <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+          <ScalarProperty Name="Department_Des" ColumnName="Department_Des" />
+          <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+          <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ADS_Master_User">
       <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Master_User">
         <MappingFragment StoreEntitySet="ADS_Master_User">
@@ -42,6 +55,34 @@
           <ScalarProperty Name="Experience" ColumnName="Experience" />
           <ScalarProperty Name="Salary" ColumnName="Salary" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Job_Seekers" ColumnName="Job_Seekers" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADS_Register">
+      <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Register">
+        <MappingFragment StoreEntitySet="ADS_Register">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Job_Seekers" ColumnName="Job_Seekers" />
+          <ScalarProperty Name="Re_Title_EN" ColumnName="Re_Title_EN" />
+          <ScalarProperty Name="Re_Name_EN" ColumnName="Re_Name_EN" />
+          <ScalarProperty Name="Re_Surname_EN" ColumnName="Re_Surname_EN" />
+          <ScalarProperty Name="Re_Title_TH" ColumnName="Re_Title_TH" />
+          <ScalarProperty Name="Re_Name_TH" ColumnName="Re_Name_TH" />
+          <ScalarProperty Name="Re_Surname_TH" ColumnName="Re_Surname_TH" />
+          <ScalarProperty Name="Re_Phone" ColumnName="Re_Phone" />
+          <ScalarProperty Name="Re_Email" ColumnName="Re_Email" />
+          <ScalarProperty Name="Re_Current_Position" ColumnName="Re_Current_Position" />
+          <ScalarProperty Name="Re_Department" ColumnName="Re_Department" />
+          <ScalarProperty Name="Re_Position" ColumnName="Re_Position" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Status_Appointment" ColumnName="Status_Appointment" />
+          <ScalarProperty Name="Status_Confirm" ColumnName="Status_Confirm" />
+          <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+          <ScalarProperty Name="Appointment_Date" ColumnName="Appointment_Date" />
+          <ScalarProperty Name="Confirm_Date" ColumnName="Confirm_Date" />
+          <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+          <ScalarProperty Name="Re_Img" ColumnName="Re_Img" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

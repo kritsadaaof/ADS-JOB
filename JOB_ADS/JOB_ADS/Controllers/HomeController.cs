@@ -14,13 +14,13 @@ namespace JOB_ADS.Controllers
         public ActionResult Index()
         {
             DateTime minusThirty = DateTime.Now.AddDays(-90);
-            ViewBag.PostJob = DbFile.ADS_PostJob.Where(a=>a.Status.Equals("T")).Where(c=>c.JOB_UpdateDate> minusThirty).Where(d=>d.OPtion_Others.Equals("T")).OrderByDescending(b=>b.JOB_UpdateDate).ToList();
+            ViewBag.PostJob = DbFile.ADS_PostJob.Where(a => a.Status.Equals("T")).Where(c => c.JOB_UpdateDate > minusThirty).Where(d => d.OPtion_Others.Equals("T")).OrderByDescending(b => b.JOB_UpdateDate).ToList();
             return View();
         }
         public ActionResult JobSingle(int JOB)
         {
-             ViewBag.PostSing = DbFile.ADS_PostJob.Where(a => a.ID.Equals(JOB))
-                .Where(a => a.Status.Equals("T")).OrderByDescending(b => b.JOB_UpdateDate).ToList(); 
+            ViewBag.PostSing = DbFile.ADS_PostJob.Where(a => a.ID.Equals(JOB))
+               .Where(a => a.Status.Equals("T")).OrderByDescending(b => b.JOB_UpdateDate).ToList();
 
             return View();
         }
@@ -28,7 +28,7 @@ namespace JOB_ADS.Controllers
         {
             DateTime minusThirty = DateTime.Now.AddDays(-90);
             ViewBag.PostList = DbFile.ADS_PostJob.Where(a => a.JOB_Title.Contains(JOB))
-                .Where(a => a.Status.Equals("T")).Where(c=>c.JOB_UpdateDate> minusThirty).Where(d => d.OPtion_Others.Equals("T")).OrderByDescending(b => b.JOB_UpdateDate).ToList();
+                .Where(a => a.Status.Equals("T")).Where(c => c.JOB_UpdateDate > minusThirty).Where(d => d.OPtion_Others.Equals("T")).OrderByDescending(b => b.JOB_UpdateDate).ToList();
             return View();
         }
 

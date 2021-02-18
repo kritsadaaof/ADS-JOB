@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "FindByDepart";
+}
+@Scripts.Render("~/FindByDepart/js")
+
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('../Content/images/hero_1.jpg');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">Find By Department</h1>
+                <div class="custom-breadcrumbs">
+                    <a href="~/Home/Index">Home</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>Find By Department</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section">
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            <div class="col-md-7 text-center">
+                <h2 class="section-depart mb-2">แผนก @ViewBag.JobDepart.Department_Name</h2>
+            </div>
+        </div>
+        <div class="bsc-tbl-st">
+            <table class="table table" id="table-basic">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ตำแหน่ง</th>
+                        <th>จำนวน</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>ตำแหน่ง</th>
+                        <th>จำนวน</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="row mb-5 justify-content-center">
+            <div class="col-md-7 text-center">
+                <a href="#" id="Search_Job" class="btn btn-primary border-width-2 d-none d-lg-inline-block">OK</a>
+            </div>
+        </div>
+    </div>
+</section>
+

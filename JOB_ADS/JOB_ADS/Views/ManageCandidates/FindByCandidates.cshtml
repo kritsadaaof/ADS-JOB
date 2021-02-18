@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "FindByCandidates";
+}
+@Scripts.Render("~/FindByCandidates/js")
+
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('../Content/images/hero_1.jpg');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">Find By Candidates</h1>
+                <div class="custom-breadcrumbs">
+                    <a href="~/Home/Index">Home</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>Find By Candidates</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section">
+    <div class="container">
+
+        <div class="row mb-5 justify-content-center">
+            <div class="col-md-7 text-center">
+                <h2 class="section-candidates mb-2">ค้นหาผู้สมัคร</h2>
+            </div>
+        </div>
+        <div class="row mb-5 justify-content-start">
+            <div class="col-md-7 text-left">
+                <h2 class="section-candidates mb-2"><a style="text-decoration: underline;">ตำแหน่ง</a> @ViewBag.RegisName.Re_Position</h2>
+            </div>
+        </div>
+        <ul class="job-listings mb-5">
+
+            @if (ViewBag.RegisList.Count != 0)
+            {
+                int counter = 1;
+                foreach (var RegisList in ViewBag.RegisList)
+                {
+                    <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+
+
+                        <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                            <div class="job-listing-position custom-width w-10 mb-3 mb-sm-0">
+                                <h2>@counter</h2>
+                            </div>
+                            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                                <h2>@RegisList.Re_Title_TH@RegisList.Re_Name_TH  @RegisList.Re_Surname_TH</h2>
+                            </div>
+                            <div class="job-checkbox-select  mb-3 mb-sm-0 custom-width w-10">
+                                <input type="checkbox" id="CB1">
+                            </div>
+                        </div>
+                    </li>
+
+                    counter = counter + 1;
+                }
+            }
+
+
+        </ul>
+
+        <div class="row mb-5 justify-content-center">
+            <a id="Selected" class="btn btn-primary border-width-2 d-none d-lg-inline-block">OK</a>
+        </div>
+       
+        <div class="row pagination-wrap" hidden>
+            <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
+                <span>Showing 1-10 Of @ViewBag.RegisList.Count Jobs</span>
+            </div>
+            <div class="col-md-6 text-center text-md-right">
+                <div class="custom-pagination ml-auto">
+                    <a href="#" class="prev">Prev</a>
+                    <div class="d-inline-block">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                    </div>
+                    <a href="#" class="next">Next</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+

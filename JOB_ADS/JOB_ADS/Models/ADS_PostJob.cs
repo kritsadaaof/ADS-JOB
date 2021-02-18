@@ -34,5 +34,6 @@ namespace JOB_ADS.Models
         public string Experience { get; set; }
         public string Salary { get; set; }
         public string Gender { get; set; }
+        public Nullable<int> Job_Seekers { get; set; }
     }
 }

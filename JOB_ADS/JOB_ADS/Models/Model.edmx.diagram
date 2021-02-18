@@ -4,9 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d47f16eb0711482fb6bdcf8661cde266" Name="Diagram1">
-        <EntityTypeShape EntityType="ADS_JOBModel.ADS_Master_User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ADS_JOBModel.ADS_PostJob" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="55879a669f2142b3b90d47a7944dbf60" Name="Diagram1">
+        <EntityTypeShape EntityType="ADS_JOBModel.ADS_Master_Department" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADS_JOBModel.ADS_Master_User" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADS_JOBModel.ADS_PostJob" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADS_JOBModel.ADS_Register" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

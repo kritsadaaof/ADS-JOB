@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="ADS_JOBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADS_Master_Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department_Code" Type="nvarchar" MaxLength="20" />
+          <Property Name="Department_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Department_Des" Type="nvarchar" MaxLength="100" />
+          <Property Name="Create_Date" Type="datetime2" Precision="7" />
+          <Property Name="Update_Date" Type="datetime2" Precision="7" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="ADS_Master_User">
           <Key>
             <PropertyRef Name="Mem_ID" />
@@ -46,16 +58,57 @@
           <Property Name="Experience" Type="nvarchar" MaxLength="50" />
           <Property Name="Salary" Type="nvarchar" MaxLength="50" />
           <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Job_Seekers" Type="int" />
+        </EntityType>
+        <EntityType Name="ADS_Register">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Job_Seekers" Type="nvarchar" MaxLength="10" />
+          <Property Name="Re_Title_EN" Type="nvarchar" MaxLength="20" />
+          <Property Name="Re_Name_EN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Re_Surname_EN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Re_Title_TH" Type="nvarchar" MaxLength="20" />
+          <Property Name="Re_Name_TH" Type="nvarchar" MaxLength="50" />
+          <Property Name="Re_Surname_TH" Type="nvarchar" MaxLength="50" />
+          <Property Name="Re_Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Re_Email" Type="nvarchar" MaxLength="30" />
+          <Property Name="Re_Current_Position" Type="nvarchar" MaxLength="50" />
+          <Property Name="Re_Department" Type="nvarchar" MaxLength="50" />
+          <Property Name="Re_Position" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Status_Appointment" Type="nvarchar" MaxLength="10" />
+          <Property Name="Status_Confirm" Type="nvarchar" MaxLength="10" />
+          <Property Name="Create_Date" Type="datetime2" Precision="7" />
+          <Property Name="Appointment_Date" Type="datetime2" Precision="7" />
+          <Property Name="Confirm_Date" Type="datetime2" Precision="7" />
+          <Property Name="Update_Date" Type="datetime2" Precision="7" />
+          <Property Name="Re_Img" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="ADS_JOBModelStoreContainer">
+          <EntitySet Name="ADS_Master_Department" EntityType="Self.ADS_Master_Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ADS_Master_User" EntityType="Self.ADS_Master_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ADS_PostJob" EntityType="Self.ADS_PostJob" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADS_Register" EntityType="Self.ADS_Register" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ADS_JOBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADS_Master_Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Department_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Department_Des" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Create_Date" Type="DateTime" Precision="7" />
+          <Property Name="Update_Date" Type="DateTime" Precision="7" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="ADS_Master_User">
           <Key>
             <PropertyRef Name="Mem_ID" />
@@ -97,10 +150,39 @@
           <Property Name="Experience" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Job_Seekers" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ADS_Register">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Job_Seekers" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Re_Title_EN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Re_Name_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Re_Surname_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Re_Title_TH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Re_Name_TH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Re_Surname_TH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Re_Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Re_Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Re_Current_Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Re_Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Re_Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Status_Appointment" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Status_Confirm" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Create_Date" Type="DateTime" Precision="7" />
+          <Property Name="Appointment_Date" Type="DateTime" Precision="7" />
+          <Property Name="Confirm_Date" Type="DateTime" Precision="7" />
+          <Property Name="Update_Date" Type="DateTime" Precision="7" />
+          <Property Name="Re_Img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADS_Master_Department" EntityType="Self.ADS_Master_Department" />
           <EntitySet Name="ADS_Master_User" EntityType="Self.ADS_Master_User" />
           <EntitySet Name="ADS_PostJob" EntityType="Self.ADS_PostJob" />
+          <EntitySet Name="ADS_Register" EntityType="Self.ADS_Register" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -108,6 +190,19 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ADS_JOBModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="ADS_Master_Department">
+            <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Master_Department">
+              <MappingFragment StoreEntitySet="ADS_Master_Department">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Department_Code" ColumnName="Department_Code" />
+                <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+                <ScalarProperty Name="Department_Des" ColumnName="Department_Des" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ADS_Master_User">
             <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Master_User">
               <MappingFragment StoreEntitySet="ADS_Master_User">
@@ -149,6 +244,34 @@
                 <ScalarProperty Name="Experience" ColumnName="Experience" />
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Job_Seekers" ColumnName="Job_Seekers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADS_Register">
+            <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Register">
+              <MappingFragment StoreEntitySet="ADS_Register">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Job_Seekers" ColumnName="Job_Seekers" />
+                <ScalarProperty Name="Re_Title_EN" ColumnName="Re_Title_EN" />
+                <ScalarProperty Name="Re_Name_EN" ColumnName="Re_Name_EN" />
+                <ScalarProperty Name="Re_Surname_EN" ColumnName="Re_Surname_EN" />
+                <ScalarProperty Name="Re_Title_TH" ColumnName="Re_Title_TH" />
+                <ScalarProperty Name="Re_Name_TH" ColumnName="Re_Name_TH" />
+                <ScalarProperty Name="Re_Surname_TH" ColumnName="Re_Surname_TH" />
+                <ScalarProperty Name="Re_Phone" ColumnName="Re_Phone" />
+                <ScalarProperty Name="Re_Email" ColumnName="Re_Email" />
+                <ScalarProperty Name="Re_Current_Position" ColumnName="Re_Current_Position" />
+                <ScalarProperty Name="Re_Department" ColumnName="Re_Department" />
+                <ScalarProperty Name="Re_Position" ColumnName="Re_Position" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Status_Appointment" ColumnName="Status_Appointment" />
+                <ScalarProperty Name="Status_Confirm" ColumnName="Status_Confirm" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="Appointment_Date" ColumnName="Appointment_Date" />
+                <ScalarProperty Name="Confirm_Date" ColumnName="Confirm_Date" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+                <ScalarProperty Name="Re_Img" ColumnName="Re_Img" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

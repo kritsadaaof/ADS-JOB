@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ADS_JOBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADS_Master_Department">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Department_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Department_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Department_Des" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Create_Date" Type="DateTime" Precision="7" />
+    <Property Name="Update_Date" Type="DateTime" Precision="7" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="ADS_Master_User">
     <Key>
       <PropertyRef Name="Mem_ID" />
@@ -41,9 +53,38 @@
     <Property Name="Experience" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Job_Seekers" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ADS_Register">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Job_Seekers" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Re_Title_EN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Re_Name_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Re_Surname_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Re_Title_TH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Re_Name_TH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Re_Surname_TH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Re_Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Re_Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Re_Current_Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Re_Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Re_Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Status_Appointment" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Status_Confirm" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Create_Date" Type="DateTime" Precision="7" />
+    <Property Name="Appointment_Date" Type="DateTime" Precision="7" />
+    <Property Name="Confirm_Date" Type="DateTime" Precision="7" />
+    <Property Name="Update_Date" Type="DateTime" Precision="7" />
+    <Property Name="Re_Img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADS_Master_Department" EntityType="Self.ADS_Master_Department" />
     <EntitySet Name="ADS_Master_User" EntityType="Self.ADS_Master_User" />
     <EntitySet Name="ADS_PostJob" EntityType="Self.ADS_PostJob" />
+    <EntitySet Name="ADS_Register" EntityType="Self.ADS_Register" />
   </EntityContainer>
 </Schema>

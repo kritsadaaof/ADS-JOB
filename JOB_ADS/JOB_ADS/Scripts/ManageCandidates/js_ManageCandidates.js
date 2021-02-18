@@ -1,6 +1,32 @@
-﻿$(document).ready(function () {  
-    $("#Search_Job").click(function () { 
-        window.location = baseUrl + "Home/JobList?JOB=" + $('#TitleS').val();
+﻿$(document).ready(function () {
+    $("#Find_Candidates").click(function () {
+            $.ajax({
+                type: "post",
+                url: baseUrl + "ManageCandidates/DataFindByDepart",
+                data: { DEPART: $("#DepartmentS").val()},
+                success: function (data) {
+                    if (data != "") {
+                        var pr = $.parseJSON(data);
+                        window.location = baseUrl + "ManageCandidates/FindByDepart";
+                    }
+                    else {
+                        var nFrom = "bottom";
+                        var nAlign = "center";
+                        var nIcons = $(this).attr('data-icon');
+                        var nType = "warning";
+                        var nAnimIn = $(this).attr('data-animation-in');
+                        var nAnimOut = $(this).attr('data-animation-out');
+                        var mEss = "กรุณาเลือกข้อมูลให้ถูกต้อง";
+                        notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
+                        setTimeout(
+                            function () {
+                                window.location = baseUrl + "ManageCandidates/Manage_Candidates";
+                            }, 1500);
+                      
+                    }
+                    
+                }
+            });     
     });
 });
 
@@ -46,6 +72,7 @@ function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify
             '</div>'
     });
 };
+
 
 /*
 function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify

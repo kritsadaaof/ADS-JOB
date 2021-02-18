@@ -65,6 +65,10 @@
                                     {
                                         <li><a href="~/Account/EditJOB">Edit Job</a></li>
                                     }
+                                    @if (Session["User"] != null)
+                                    {
+                                        <li><a href="~/ManageCandidates/Manage_Candidates">Manage Candidates</a></li>
+                                    }
                                 </ul>
                             </li>
                             <li><a href="#" class="btn btn-outline-white text-white nav-link btn-Menu">About Us</a></li>
@@ -79,6 +83,10 @@
                                     @if (Session["User"] != null)
                                     {
                                         <li><a href="~/Account/EditJOB">Edit Job</a></li>
+                                    }
+                                    @if (Session["User"] != null)
+                                    {
+                                        <li><a href="~/ManageCandidates/Manage_Candidates">Manage Candidates</a></li>
                                     }
                                 </ul>
                             </li>

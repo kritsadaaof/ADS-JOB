@@ -38,6 +38,17 @@ namespace JOB_ADS
             bundles.Add(new ScriptBundle("~/HomeIndex/js").Include(
                       "~/Scripts/Home/js_Index.js"));
 
+            bundles.Add(new ScriptBundle("~/ManageCandidates/js").Include(
+                      "~/Scripts/ManageCandidates/js_ManageCandidates.js"));
+
+            bundles.Add(new ScriptBundle("~/FindByCandidates/js").Include(
+                      "~/Scripts/ManageCandidates/js_FindByCandidates.js"));
+
+            bundles.Add(new ScriptBundle("~/CandidatesDetail/js").Include(
+                      "~/Scripts/ManageCandidates/js_CandidatesDetail.js"));
+
+            bundles.Add(new ScriptBundle("~/FindByDepart/js").Include(
+                      "~/Scripts/ManageCandidates/js_FindByDepart.js"));
         }
     }
 }
