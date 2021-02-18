@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "RegisterForm";
+}
+@Scripts.Render("~/RegisterForm/js")
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('../Content/images/hero_1.jpg');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">ลงทะเบียน</h1>
+                <div class="custom-breadcrumbs">
+                    <a href="~/Home/Index">Home</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>ลงทะเบียน</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-12 mb-md-0">
+                <div class="col-md-12 text-center">
+                    <h2 class="section-title mb-2"><a style="text-decoration: underline;">ลงทะเบียน</a></h2>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4 mb-md-0">
+                <label class="text-black" for="fname">Title</label>
+                <select id="TitleEN" class="form-control">
+                    <option value="Mr.">Mr.</option>
+                    <option value="Mrs.">Mrs.</option>
+                    <option value="Miss.">Miss.</option>
+                </select>
+            </div>
+
+
+            <div class="col-md-4 mb-4 mb-md-0">
+                <label class="text-black" for="fname">Name</label>
+                <input type="text" id="NameEN" class="form-control">
+            </div>
+
+
+            <div class="col-md-4 mb-4 mb-md-0">
+                <label class="text-black" for="fname">Surname</label>
+                <input type="text" id="SurnameEN" class="form-control">
+            </div>
+
+            <div class="col-md-4 mb-4 mb-md-0">
+                <label class="text-black" for="fname">คำนำหน้า</label>
+                <select id="TitleTH" class="form-control">
+                    <option value="นาย">นาย</option>
+                    <option value="นาง">นาง</option>
+                    <option value="นางสาว">นางสาว</option>
+                </select>
+            </div>
+
+
+            <div class="col-md-4 mb-4 mb-md-0">
+                <label class="text-black" for="fname">ชื่อ</label>
+                <input type="text" id="NameTH" class="form-control">
+            </div>
+
+
+            <div class="col-md-4 mb-4 mb-md-0">
+                <label class="text-black" for="fname">นามสกุล</label>
+                <input type="text" id="SurnameTH" class="form-control">
+            </div>
+
+           
+            
+            <div class="col-md-12 mb-12 mb-md-0">
+                <div class="col-md-12 text-center">
+                    <a id="SaveCanDetail" class="btn btn-primary border-width-2 d-none d-lg-inline-block">OK</a>
+                    <a id="Clear" class="btn btn-secondary border-width-2 d-none d-lg-inline-block">Clear</a>
+                </div>
+            </div>
+              
+
+            </div>
+    </div>
+</section>
+

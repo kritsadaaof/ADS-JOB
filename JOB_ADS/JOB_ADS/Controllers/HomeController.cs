@@ -24,6 +24,11 @@ namespace JOB_ADS.Controllers
 
             return View();
         }
+        public ActionResult RegisterForm()
+        {
+    
+            return View();
+        }
         public ActionResult JobList(string JOB)
         {
             DateTime minusThirty = DateTime.Now.AddDays(-90);

@@ -18,10 +18,7 @@
                         var nAnimOut = $(this).attr('data-animation-out');
                         var mEss = "กรุณาเลือกข้อมูลให้ถูกต้อง";
                         notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
-                        setTimeout(
-                            function () {
-                                window.location = baseUrl + "ManageCandidates/Manage_Candidates";
-                            }, 1500);
+                        
                       
                     }
                     

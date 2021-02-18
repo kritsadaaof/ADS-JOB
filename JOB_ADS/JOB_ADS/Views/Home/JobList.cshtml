@@ -30,62 +30,74 @@
             {
                 foreach (var PostJob in ViewBag.PostList)
                 {
-                    <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-                        <a href="~/Home/JobSingle?JOB=@PostJob.ID"></a>
+            <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+                <a href="~/Home/JobSingle?JOB=@PostJob.ID"></a>
 
-                        <div class="job-listing-logo">
-                            <img src="~/Content/images/LOGO/@PostJob.Logo_Image" alt="No Logo" class="img-fluid">
-                        </div>
+                <div class="job-listing-logo">
+                    <img src="~/Content/images/LOGO/@PostJob.Logo_Image" alt="No Logo" class="img-fluid">
+                </div>
 
-                        <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-                            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                                <h2>@PostJob.JOB_Title</h2>
-                                <strong>@PostJob.Company_Name</strong><br />
-                                <strong>Update @PostJob.JOB_UpdateDate</strong>
-                            </div> <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                                <span class="icon-check"> Experience: @PostJob.Experience</span><br />
-                                <span class="icon-check"> Salary: @PostJob.Salary</span><br />
-                                <span class="icon-check"> Gender: @PostJob.Gender</span><br />
-                            </div>
-                            <div class="job-listing-meta">
-                                @if (@PostJob.JOB_Type == "Part Time")
-                                {<span class="badge badge-danger">@PostJob.JOB_Type</span>}
+                <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                    <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                        <h2>@PostJob.JOB_Title</h2>
+                        <strong>@PostJob.Company_Name</strong><br />
+                        <strong>Update @PostJob.JOB_UpdateDate</strong>
+                    </div> <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+                        <span class="icon-check"> Experience: @PostJob.Experience</span><br />
+                        <span class="icon-check"> Salary: @PostJob.Salary</span><br />
+                        <span class="icon-check"> Gender: @PostJob.Gender</span><br />
+                    </div>
+                    <div class="job-listing-meta">
+                        @if (@PostJob.JOB_Type == "Part Time")
+                        {<span class="badge badge-danger">@PostJob.JOB_Type</span>}
 
-                                @if (@PostJob.JOB_Type == "Full Time")
-                                {<span class="badge badge-success" style="background-color:#2114c4">@PostJob.JOB_Type</span>}
-                            </div>
-                        </div>
-                    </li>
+                        @if (@PostJob.JOB_Type == "Full Time")
+                        {<span class="badge badge-success" style="background-color:#2114c4">@PostJob.JOB_Type</span>}
+                    </div>
+                </div>
+                
+            </li>
 
                 }
             }
         </ul>
-        <div class="col-md-2 mb-2">
-            
-        </div>
-        <div class="col-md-2 mb-2">
-            <a id="ApplyJobList" class="btn btn-primary border-width-2 d-none d-lg-inline-block">Apply</a>
-            <a id="ClearJobList" class="btn btn-secondary border-width-2 d-none d-lg-inline-block">Clear</a>
-        </div>
+       
 
-        <div class="row pagination-wrap" hidden>
-            <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-                <span>Showing 1-10 Of @ViewBag.PostList.Count Jobs</span>
-            </div>
-            <div class="col-md-6 text-center text-md-right">
-                <div class="custom-pagination ml-auto">
-                    <a href="#" class="prev">Prev</a>
-                    <div class="d-inline-block">
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
+
+            <div class="row pagination-wrap" hidden>
+                <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
+                    <span>Showing 1-10 Of @ViewBag.PostList.Count Jobs</span>
+                </div>
+                <div class="col-md-6 text-center text-md-right">
+                    <div class="custom-pagination ml-auto">
+                        <a href="#" class="prev">Prev</a>
+                        <div class="d-inline-block">
+                            <a href="#" class="active">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                        </div>
+                        <a href="#" class="next">Next</a>
                     </div>
-                    <a href="#" class="next">Next</a>
                 </div>
             </div>
         </div>
 
+
+
+</section>
+<section class="site-section">
+    <div class="row mb-6">
+        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3 mb-4 mb-lg-0">
+
+        </div>
+        <div class="col-xl-2 col-sm-2 col-md-2 col-lg-2 mb-4 mb-lg-0">
+
+        </div>
+
+        <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 mb-4 mb-lg-0">
+            <a id="ApplyJobList" class="btn btn-primary border-width-2 d-none d-lg-inline-block">Apply</a>
+            <a id="ClearJobList" class="btn btn-secondary border-width-2 d-none d-lg-inline-block">Clear</a>
+        </div>
     </div>
 </section>
-
