@@ -86,13 +86,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="job-region">Job Region</label><i style="color:red">**</i>
-                        <select class="selectpicker border rounded" id="job-region" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Region">
-                            <option>สงขลา</option>
-                            <option>กรุงเทพ</option>
-                            <option>ระยอง</option>
-                            <option>กำแพงเพชร</option>
-                            <option>ขอนแก่น</option>
+                        <label for="job-region">Department</label><i style="color:red">**</i>
+                        <select class="selectpicker border rounded" id="job-region" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Department">
+                            @foreach (var Departs in ViewBag.Depart)
+                            {
+                                <option value="@Departs.Department_Name">@Departs.Department_Name</option>
+
+                            }
+
                         </select>
                     </div>
 

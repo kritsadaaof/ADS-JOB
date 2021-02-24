@@ -61,7 +61,8 @@ namespace JOB_ADS.Controllers
                             TR_JobP.ID,
                             TR_JobP.JOB_Title,
                             TR_JobP.JOB_Location,
-                            TR_JobP.Salary
+                            TR_JobP.Salary,
+                            TR_JobP.JOB_Region
                         }).ToList();
             string jsonlog = new JavaScriptSerializer().Serialize(data);
             return jsonlog;

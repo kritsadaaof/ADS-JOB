@@ -753,7 +753,7 @@ h1, h2, h3, h4 {
   overflow: hidden; }
 
 .btn-file input[type=file] {
-  position: absolute;
+  position:absolute;
   top: 0;
   right: 0;
   min-width: 100%;

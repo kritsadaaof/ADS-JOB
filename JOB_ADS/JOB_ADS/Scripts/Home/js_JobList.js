@@ -1,14 +1,34 @@
 ﻿$(document).ready(function () {
-  //  document.getElementById('CheckJobList').style.display = 'none';
-  //  document.getElementById('Regist').style.display = '';
-    
-    var d = new Date(),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-    var val = day + "/" + month + "/" + year;
+    document.getElementById('CheckJobList').style.display = 'none';
+    document.getElementById('Regist').style.display = '';
+
+
+    $('#CVUplode').change(function () {
+        if ($('#CVUplode').val() == "") {
+            $('#CV').html('Browse CV');
+        } else {
+            var res = $('#CVUplode').val().substring(12);
+            $('#CV').html(res);
+        }
+    });
+    $('#PICUplode').change(function () {
+        if ($('#PICUplode').val() == "") {
+            $('#PIC').html('Browse Pic');
+        }
+        else {
+            var res = $('#PICUplode').val().substring(12);
+            $('#PIC').html(res);
+        }
+    });
+    $('#CERUplode').change(function () {
+        if ($('#CERUplode').val() == "") {
+            $('#CER').html('Browse Certificate');
+        }
+        else {
+            var res = $('#CERUplode').val().substring(12);
+            $('#CER').html(res);
+        }
+    });
     // $('.timepicker').pickatime({});
     
      
@@ -43,7 +63,7 @@
     });
 
     $("#OK").click(function () { 
-        $("#ImgUplode").click();
+        $("#CVUplode").click();
     });
 
     $("#formUP").click(function () {
@@ -71,19 +91,22 @@
                // alert(pr);
                 $.each(JSON.parse(data), function (i, obj) {
                     
-                    $('#tab_logic').append('<tr id="addr' + (a) + '"><td>' + (a) + '</td><td>' + pr[i]["JOB_Title"] +
-                        '</td><td>' + pr[i]["JOB_Location"] + '</td><td>' + pr[i]["Salary"] + '</td></tr>');
+                    $('#tab_logic').append('<tr id="addr' + (a) + '"><td>' + (a) + '</td><td>' + pr[i]["JOB_Title"] + '</td><td>' + pr[i]["JOB_Region"] +
+                        '</td><td>' + pr[i]["JOB_Location"] + '</td><td>' + pr[i]["Salary"] + '</td><td>' + " <div class='input-group'><input type='text'class='form-control py-2 px-4' id='Ex" + a + "'><div class='input-group-append'><span class='input-group-text px-2'>ปี</span></div></div>" + '</td></tr>');
                   // a = a + 1;
                 }); 
                 a++;
+                
+
             });
         });
+       
         /////////////////////////////////////////////////////////////////////
+        
 
-
-        if (colors != '') {
-            document.getElementById('CheckJobList').style.display = 'none';
-            document.getElementById('Regist').style.display = '';
+        if (colors != '') { 
+                    document.getElementById('CheckJobList').style.display = 'none';
+                    document.getElementById('Regist').style.display = ''; 
         }
     });
     // alert(colors);

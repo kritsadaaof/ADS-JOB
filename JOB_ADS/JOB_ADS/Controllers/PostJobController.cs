@@ -17,10 +17,14 @@ namespace JOB_ADS.Controllers
             if (Session["User"] == null)
             {
                 // check if a new session id was generated
+                
                   return RedirectToAction("Index", "Home");
+
              //   return View();
             }
-            else { return View(); }
+            else {
+                ViewBag.Depart = DbFile.ADS_Master_Department.ToList(); return View();
+            }
 
         }
         
