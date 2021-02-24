@@ -3,6 +3,8 @@
     padding-bottom: 20px;
 }
 
+
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -24,3 +26,21 @@ textarea {
 }
 
 
+.datepicker td, .datepicker th {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.85rem;
+}
+
+.datepicker {
+    margin-bottom: 3rem;
+}
+.Font_Input {
+    padding-top: 12px;
+}
+
+
+
+
+
+ 

@@ -2,6 +2,15 @@
 @{
     ViewBag.Title = "JobList";
 }
+
+@Scripts.Render("~/HomeJobList/js")
+
+
+
+<link href="~/Content/css/theme-default/bootstrap-datepicker.css" rel="stylesheet" />
+<script src="~/Content/js/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+
 <section class="section-hero overlay inner-page bg-image" style="background-image: url('../Content/images/hero_1.jpg');" id="home-section">
     <div class="container">
         <div class="row">
@@ -16,7 +25,7 @@
     </div>
 </section>
 <section class="site-section">
-    <div class="container">
+    <div id="CheckJobList" class="container">
 
         <div class="row mb-5 justify-content-center">
             <div class="col-md-7 text-center">
@@ -24,80 +33,527 @@
             </div>
         </div>
 
-        <ul class="job-listings mb-5">
+        <ul class="job-listings">
 
             @if (ViewBag.PostList.Count != 0)
             {
                 foreach (var PostJob in ViewBag.PostList)
                 {
-            <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-                <a href="~/Home/JobSingle?JOB=@PostJob.ID"></a>
+                    <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+                        <a href="~/Home/JobSingle?JOB=@PostJob.ID"></a>
+                        <div class="job-listing-meta">
+                            <label class="col-xl-3 col-lg-4  col-md-4">
+                                <input id="OPOth" type="checkbox" class="z" value="@PostJob.ID">
+                            </label>
+                        </div>
 
-                <div class="job-listing-logo">
-                    <img src="~/Content/images/LOGO/@PostJob.Logo_Image" alt="No Logo" class="img-fluid">
-                </div>
+                        <div class="job-listing-logo">
+                            <img src="~/Content/images/LOGO/@PostJob.Logo_Image" alt="No Logo" class="img-fluid">
+                        </div>
 
-                <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-                    <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                        <h2>@PostJob.JOB_Title</h2>
-                        <strong>@PostJob.Company_Name</strong><br />
-                        <strong>Update @PostJob.JOB_UpdateDate</strong>
-                    </div> <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                        <span class="icon-check"> Experience: @PostJob.Experience</span><br />
-                        <span class="icon-check"> Salary: @PostJob.Salary</span><br />
-                        <span class="icon-check"> Gender: @PostJob.Gender</span><br />
-                    </div>
-                    <div class="job-listing-meta">
-                        @if (@PostJob.JOB_Type == "Part Time")
-                        {<span class="badge badge-danger">@PostJob.JOB_Type</span>}
+                        <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                                <h2>@PostJob.JOB_Title</h2>
+                                <strong>@PostJob.Company_Name</strong><br />
+                                <strong>Update @PostJob.JOB_UpdateDate</strong>
+                            </div> <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+                                <span class="icon-check"> Experience: @PostJob.Experience</span><br />
+                                <span class="icon-check"> Salary: @PostJob.Salary</span><br />
+                                <span class="icon-check"> Gender: @PostJob.Gender</span><br />
+                            </div>
+                            <div class="job-listing-meta">
+                                @if (@PostJob.JOB_Type == "Part Time")
+                                {<span class="badge badge-danger">@PostJob.JOB_Type</span>}
 
-                        @if (@PostJob.JOB_Type == "Full Time")
-                        {<span class="badge badge-success" style="background-color:#2114c4">@PostJob.JOB_Type</span>}
-                    </div>
-                </div>
-                
-            </li>
+                                @if (@PostJob.JOB_Type == "Full Time")
+                                {<span class="badge badge-success" style="background-color:#2114c4">@PostJob.JOB_Type</span>}
+                            </div>
+                        </div>
+
+                    </li>
 
                 }
             }
         </ul>
-       
+
+        <div class="row mb-6" hidden>
+            <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3 mb-4 mb-lg-0">
+            </div>
+            <div class="col-xl-2 col-sm-2 col-md-2 col-lg-2 mb-4 mb-lg-0">
+            </div>
 
 
-            <div class="row pagination-wrap" hidden>
-                <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-                    <span>Showing 1-10 Of @ViewBag.PostList.Count Jobs</span>
-                </div>
-                <div class="col-md-6 text-center text-md-right">
-                    <div class="custom-pagination ml-auto">
-                        <a href="#" class="prev">Prev</a>
-                        <div class="d-inline-block">
-                            <a href="#" class="active">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                        </div>
-                        <a href="#" class="next">Next</a>
+
+        </div>
+        <div class="row mb-6">
+
+            <div class="col-xl-4 col-sm-2 col-md-3 col-lg-4 mb-4 mb-lg-0">
+
+            </div>
+            <div class="col-xl-4 col-sm-8 col-md-6 col-lg-4 mt-3 mb-4 mb-lg-0">
+                <div class="row">
+                    <div class="col-6">
+                        <!-- <a href="#" id="ApplyJobList" class="btn btn-block btn-primary btn-md"><span class="icon-add mr-2"></span>Apply</a>-->
+                        <button id="ApplyJobList" type="button" class="btn btn-block btn-primary btn-md"><span class="icon-save mr-2"></span>Apply</button>
+
+                    </div>
+                    <div class="col-6">
+                        <a id="ClearJobList" href="~/Home/JobList?JOB=#" class="btn btn-block btn-light btn-md"><span class="icon-clear_all mr-2"></span>Clear</a>
                     </div>
                 </div>
             </div>
-        </div>
 
-
-
-</section>
-<section class="site-section">
-    <div class="row mb-6">
-        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3 mb-4 mb-lg-0">
-
-        </div>
-        <div class="col-xl-2 col-sm-2 col-md-2 col-lg-2 mb-4 mb-lg-0">
-
-        </div>
-
-        <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 mb-4 mb-lg-0">
-            <a id="ApplyJobList" class="btn btn-primary border-width-2 d-none d-lg-inline-block">Apply</a>
-            <a id="ClearJobList" class="btn btn-secondary border-width-2 d-none d-lg-inline-block">Clear</a>
         </div>
     </div>
+    <div id="Regist" class="container" style="display:none">
+        <div class="col-md-12 mb-12 mb-md-0">
+            <div class="col-md-12 text-center">
+                <h5 class="section-title font-weight-bold mb-2"><a style="text-decoration: underline;">ลงทะเบียน</a></h5>
+
+            </div>
+        </div>
+        <ul class="job-listings">
+
+            <li class="text-center"><i style="color:red">ข้อมูลส่วนตัว</i></li>
+            <li class="mb-3">
+                <div class="container">
+                    <div class="row">
+
+
+                        <div class="col-md-2 mb-4 mb-md-0">
+                            <i class="text-black" for="fname">คำนำหน้า</i><i style="color:red">*</i>
+                            <select id="TitleEN" class="form-control">
+                                <option value="Mr.">Mr.</option>
+                                <option value="Mrs.">Mrs.</option>
+                                <option value="Miss.">Miss.</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-md-5 mb-4 mb-md-0">
+                            <i class="text-black" for="fname">ชื่อ</i><i style="color:red">*</i>
+                            <input type="text" id="NameEN" class="form-control" placeholder="Name">
+                        </div>
+
+
+                        <div class="col-md-5 mb-4 mb-md-0">
+                            <i class="text-black" for="fname">นามสกุล</i><i style="color:red">*</i>
+                            <input type="text" id="SurnameEN" class="form-control" placeholder="Surname">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-2 mb-4 mb-md-0">
+                            <select id="TitleTH" class="form-control">
+                                <option value="นาย">นาย</option>
+                                <option value="นาง">นาง</option>
+                                <option value="นางสาว">นางสาว</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-md-5 mb-4 mb-md-0">
+                            <input type="text" id="NameTH" class="form-control" placeholder="ชื่อ">
+                        </div>
+
+
+                        <div class="col-md-5 mb-4 mb-md-0">
+                            <input type="text" id="SurnameTH" class="form-control" placeholder="นามสกุล">
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="mb-3">
+                <div class="container">
+                    <div class="row">
+
+
+                        <div class="col-md-3 mb-4 mb-md-0" hidden>
+                            <div class="" id="">
+
+                                <input type="text" class="form-control" id="Date" readonly placeholder="เลือกวันที่">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-3 mb-4 mb-md-0">
+                            <i class="text-black" for="fname">วัน/เดือน/ปี เกิด</i><i style="color:red">*</i>
+                            <div class="input-group">
+                                <input type="text" placeholder="เลือกวันที่" class="form-control py-2 px-4" id="BDate">
+                                <div class="input-group-append"><span class="input-group-text px-3"><i class="icon-calendar"></i></span></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-2 mb-4 mb-md-0">
+                            <i class="text-black" for="fname">ส่วนสูง</i><i style="color:red">*</i>
+                            <div class="input-group">
+                                <input type="text" placeholder="ส่วนสูง" class="form-control py-2 px-4" id="Tal">
+                                <div class="input-group-append"><span class="input-group-text px-2">ซม.</span></div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2 mb-4 mb-md-0">
+                            <i class="text-black" for="fname">น้ำหนัก</i><i style="color:red">*</i>
+                            <div class="input-group">
+                                <input type="text" placeholder="น้ำหนัก" class="form-control py-2 px-4" id="Tal">
+                                <div class="input-group-append"><span class="input-group-text px-2">กก.</span></div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-5 mb-4 mb-md-0">
+                            <div class="" id="">
+                                <i class="text-black" for="fname">หมายเลขบัตรประชาชน</i><i style="color:red">*</i>
+                                <input type="text" class="form-control" id="Date" placeholder="กรอกเลขบัตร">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="mb-3">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-3 mb-4 mb-md-0">
+                            <i class="text-black" for="fname">เพศ</i><i style="color:red">*</i>
+                            <select id="TitleEN" class="form-control">
+                                <option value="ชาย">ชาย</option>
+                                <option value="หญิง">หญิง</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-4 mb-md-0">
+                            <i class="text-black" for="fname">สถานภาพการสมรส</i><i style="color:red">*</i>
+                            <select id="TitleEN" class="form-control">
+                                <option value="สมรส">สมรส</option>
+                                <option value="โสด">โสด</option>
+                                <option value="หม่าย">หม่าย</option>
+                                <option value="หย่า">หย่า</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-4 mb-md-0">
+                            <i class="text-black" for="fname">สัญชาติ</i><i style="color:red">*</i>
+                            <select class="form-control" id="nationality" name="nationality">
+                                <option value="1707">Afghan</option>
+                                <option value="1708">Albanian</option>
+                                <option value="1709">Algerian</option>
+                                <option value="1710">American</option>
+                                <option value="1711">Andorran</option>
+                                <option value="1712">Argentine</option>
+                                <option value="1713">Armenian</option>
+                                <option value="1714">Australian</option>
+                                <option value="1715">Austrian</option>
+                                <option value="1716">Azerbaijani</option>
+                                <option value="1717">Bahamian</option>
+                                <option value="1718">Bahraini</option>
+                                <option value="1719">Bangladeshi</option>
+                                <option value="1720">Barbadian</option>
+                                <option value="1721">Belarusian</option>
+                                <option value="1722">Belgian</option>
+                                <option value="1723">Belizean</option>
+                                <option value="1724">Beninese</option>
+                                <option value="1725">Bermudan</option>
+                                <option value="1726">Bhutanese</option>
+                                <option value="1727">Bolivian</option>
+                                <option value="1728">Bosnian</option>
+                                <option value="1805">Bosotho</option>
+                                <option value="1729">Botswana</option>
+                                <option value="1730">Brazilian</option>
+                                <option value="1731">British/Briton</option>
+                                <option value="1732">Bruneian</option>
+                                <option value="1733">Bulgarian</option>
+                                <option value="1734">Burkinabe</option>
+                                <option value="1826">Burmese</option>
+                                <option value="1735">Burundian</option>
+                                <option value="1736">Cambodian</option>
+                                <option value="1737">Cameroonian</option>
+                                <option value="1738">Canadian</option>
+                                <option value="1739">Cape Verdean</option>
+                                <option value="1740">Central African</option>
+                                <option value="1741">Chadian</option>
+                                <option value="1742">Chilean</option>
+                                <option value="1743">Chinese</option>
+                                <option value="1744">Chinese Taipei</option>
+                                <option value="1745">Colombian</option>
+                                <option value="1746">Comoran</option>
+                                <option value="1747">Congolese</option>
+                                <option value="1748">Costa Rican</option>
+                                <option value="1749">Croat</option>
+                                <option value="1750">Cuban</option>
+                                <option value="1751">Cypriot</option>
+                                <option value="1752">Czech</option>
+                                <option value="1753">Danish/Dane</option>
+                                <option value="1754">Djiboutian</option>
+                                <option value="1755">Domincian</option>
+                                <option value="1756">Dutch/Dutchman</option>
+                                <option value="1757">Ecuadorian</option>
+                                <option value="1758">Egyptian</option>
+                                <option value="1760">Emirian</option>
+                                <option value="1761">Equatorial Guinean</option>
+                                <option value="1762">Eritrean</option>
+                                <option value="1763">Estonian</option>
+                                <option value="1764">Ethiopian</option>
+                                <option value="1765">Fijian</option>
+                                <option value="1766">Filipino</option>
+                                <option value="1767">Finnish/Finn</option>
+                                <option value="1768">French</option>
+                                <option value="1769">Frenchman</option>
+                                <option value="1770">Gabones</option>
+                                <option value="1771">Gambian</option>
+                                <option value="1772">Geogian</option>
+                                <option value="1773">German</option>
+                                <option value="1774">Ghanaian</option>
+                                <option value="1775">Greek</option>
+                                <option value="1776">Gresnadian</option>
+                                <option value="1777">Guatemalan</option>
+                                <option value="1779">Guinea Bissauan</option>
+                                <option value="1778">Guinean</option>
+                                <option value="1780">Guyanese</option>
+                                <option value="1781">Haitian</option>
+                                <option value="1782">Herzegovinian</option>
+                                <option value="1783">Honduran</option>
+                                <option value="1784">Hungarian</option>
+                                <option value="1786">I-Kirbati</option>
+                                <option value="1785">Icelander</option>
+                                <option value="1787">Indian</option>
+                                <option value="1788">Indonesian</option>
+                                <option value="1789">Iranian</option>
+                                <option value="1790">Iraqi</option>
+                                <option value="1791">Irish/Irishman</option>
+                                <option value="1792">Israeli</option>
+                                <option value="1793">Italian</option>
+                                <option value="1794">Jamaican</option>
+                                <option value="1795">Japanese</option>
+                                <option value="1796">Jordanian</option>
+                                <option value="1797">Kazakhstani</option>
+                                <option value="1798">Kenyan</option>
+                                <option value="1799">Korean</option>
+                                <option value="1800">Kuwaiti</option>
+                                <option value="1801">Kyrgyz</option>
+                                <option value="1802">Lao, Laotian</option>
+                                <option value="1803">Latvian</option>
+                                <option value="1804">Lebanese</option>
+                                <option value="1806">Liberian</option>
+                                <option value="1807">Libyan</option>
+                                <option value="1808">Liechtensteiner</option>
+                                <option value="1809">Lithuanian</option>
+                                <option value="1810">Luxmbourg</option>
+                                <option value="1811">Macedonian</option>
+                                <option value="1812">Malagasy</option>
+                                <option value="1813">Malawian</option>
+                                <option value="1814">Malaysian</option>
+                                <option value="1815">Maldivian</option>
+                                <option value="1816">Malian</option>
+                                <option value="1817">Maltese</option>
+                                <option value="1818">Mauritian</option>
+                                <option value="1819">Mexican</option>
+                                <option value="1820">Micronesia</option>
+                                <option value="1821">Moldovan</option>
+                                <option value="1822">Monacan</option>
+                                <option value="1823">Mongolian</option>
+                                <option value="1824">Moroccan</option>
+                                <option value="1825">Mozambican</option>
+                                <option value="1827">Namibian</option>
+                                <option value="1828">Nauruan</option>
+                                <option value="1829">Nepalese</option>
+                                <option value="1831">New Zealand(er)</option>
+                                <option value="1830">Ni-Vanuatu</option>
+                                <option value="1832">Nicaraguan</option>
+                                <option value="1833">Nigerien</option>
+                                <option value="1834">Norwegian</option>
+                                <option value="1835">Omani</option>
+                                <option value="1836">Pakistani</option>
+                                <option value="1837">Panamanian</option>
+                                <option value="1838">Papua New Guinean</option>
+                                <option value="1839">Paraguayan</option>
+                                <option value="1840">Peruvian</option>
+                                <option value="1841">Polish/Pole</option>
+                                <option value="1842">Portuguese</option>
+                                <option value="1843">Qatari</option>
+                                <option value="1844">Romanian</option>
+                                <option value="1845">Russian</option>
+                                <option value="1846">Rwandan</option>
+                                <option value="1759">Salvadoran</option>
+                                <option value="1848">Sammarinese</option>
+                                <option value="1847">Samoan</option>
+                                <option value="1849">Saudi Arabian</option>
+                                <option value="1850">Senegalese</option>
+                                <option value="1851">Seychelles</option>
+                                <option value="1852">Sierra Leonean</option>
+                                <option value="1853">Singaporean</option>
+                                <option value="1854">Slovak</option>
+                                <option value="1855">Slovenian</option>
+                                <option value="1856">Somali</option>
+                                <option value="1857">South African</option>
+                                <option value="1858">Spanish/Spaniard</option>
+                                <option value="1859">Sri Lankan</option>
+                                <option value="1860">Sudanese</option>
+                                <option value="1861">Surinamer</option>
+                                <option value="1862">Swazi</option>
+                                <option value="1863">Swedish/Swede</option>
+                                <option value="1864">Swiss</option>
+                                <option value="1865">Syrian</option>
+                                <option value="1866">Tajik</option>
+                                <option value="1867">Tanzanian</option>
+                                <option value="1869">Togolese</option>
+                                <option value="1870">Tongan</option>
+                                <option value="1871">Trinidadian</option>
+                                <option value="1872">Tunisian</option>
+                                <option value="1873">Turkish/Turk</option>
+                                <option value="1874">Turkmen</option>
+                                <option value="1875">Ugandan</option>
+                                <option value="1876">Ukrainian</option>
+                                <option value="1877">Uruguayan</option>
+                                <option value="1878">Uzbek</option>
+                                <option value="1879">Venezuelan</option>
+                                <option value="1880">Vietnamese</option>
+                                <option value="1881">Yemeni</option>
+                                <option value="1882">Zambian</option>
+                                <option value="1883">Zimbabwean</option>
+                                <option value="1868" selected="selected">ไทย</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-4 mb-md-0">
+                            <i class="text-black" for="fname">ศาสนา</i><i style="color:red">*</i>
+                            <select class="form-control" id="religion" name="religion">
+                                <option value="136">ไม่ระบุ</option>
+                                <option value="138">คริสต์</option>
+                                <option value="143">เชน</option>
+                                <option value="141">ซิกข์</option>
+                                <option value="144">โซโรอัสเตอร์</option>
+                                <option value="145">บาไฮ</option>
+                                <option value="140">พราหมณ์-ฮินดู</option>
+                                <option value="137" selected="selected">พุทธ</option>
+                                <option value="142">ยิว</option>
+                                <option value="139">อิสลาม</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-1">
+                            <i class="text-black" for="fname">ที่อยู่</i><i style="color:red">*</i>
+                            <textarea class="form-control" rows="5" id="address" name="address" placeholder="กรอกที่อยู่"></textarea>
+
+                        </div>
+
+                        <div class="col-md-3 mb-4 mb-md-0">
+                            <label class="text-black" for="fname"><i>เบอร์โทร</i></label><i style="color:red">*</i>
+                            <input type="text" id="NameTH" class="form-control" placeholder="Tel.">
+                            <label class="text-black mt-3" for="fname"><i>ตำแหน่งเดิม</i></label><i style="color:red">*</i>
+                            <input type="text" id="NameTH" class="form-control" placeholder="กรอกข้อมูลตำแหน่งเดิม">
+                        </div>
+
+
+
+                        <div class="col-md-3 mb-4 mb-md-0">
+                            <label class="text-black" for="fname"><i>E-Mail</i></label><i style="color:red">*</i>
+                            <input type="email" id="SurnameTH" class="form-control" placeholder="กรอกข้อมูลEmail">
+                            <label class="text-black mt-3" for="fname" data-toggle="modal" data-target="#exampleModalLong"><i>Upload CV</i></label><i style="color:red">*</i> <br />
+                            <form class="btn  btn-file" id="formUP" enctype="multipart/form-data" >
+                                <span class="icon-file-pdf-o mr-2"></span>
+                                Browse File<input type="file" name="file" id="ImgUplode" hidden />
+                            </form>
+                        </div>
+
+
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                        </div>
+                        <div class="form-group col-md-4 mb-md-0">
+                            <label class="">
+                                <input id="OPhev" type="checkbox" class="" value="">
+                                <i style="color:red">ยืนยันการเปิดเผยข้อมูลให้กับ Chevron </i>
+                            </label>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+
+        <ul class="job-listings mt-3">
+
+            <li class="text-center"><P style="font-size:18px">รายการ Job ที่เลือก</P></li>
+            <li class="mb-3">
+
+                <div class="container">
+
+                    <div class="row mt-3">
+                        <table class="table  table-hover Text customers " id="tab_logic">
+                            <thead>
+                                <tr>
+                                    <th width="5%">ลำดับ</th>
+                                    <th width="25%">Position.</th>
+                                    <th width="25%">Job Location</th>
+                                    <th width="25%">Salary</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-6">
+
+                    <div class="col-xl-4 col-sm-2 col-md-3 col-lg-4 mb-4 mb-lg-0">
+
+                    </div>
+                    <div class="col-xl-4 col-sm-8 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                        <div class="row">
+                            <div class="col-6">
+                                 <button  id="SavePostjob"  type="button" class="btn btn-block btn-primary btn-md"><span class="icon-save mr-2"></span>Save Job</button>
+                            </div>
+                            <div class="col-6">
+                                 <button id="Clear" type="button" class="btn btn-block btn-light btn-md"><span class="icon-clear_all mr-2"></span>Clear</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLongTitle">ข้อมูลที่ผู้สมัครหลีกเลี่ยงในการระบุใน CV</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                1. ความเชื่อส่วนบุคคลและประวัติต่างๆ เช่น ศาสนา และ อื่นๆ ดังนี้ <br />
+                - แนวความคิดหรือการเข้าร่วมกิจกรรมทางการเมือง<br />
+                - ความนิยมทางเพศ<br />
+                - สัญชาติ เชื้อชาติหรือการระบุตัวตนทางชนเผ่า<br />
+                - ความเป็นพลเมือง การถือสัญชาติและสถานะการลี้ภัย<br />
+                - ปรัชญาและหลักศีลธรรมที่ยึดถือ<br />
+                - ข้อมูลทางสหาภาพแรงงาน<br />
+                - ประวัติอาชญากรรม การสืบสวน ประวัติการพิจารณาคดีและศาล<br />
+                2. ข้อมูลที่ละเอียดอ่อนทางการว่าจ้าง เช่น การจ่ายค่าชดเชย  ประวัติทางวินัย  การวางแผนหาผู้สืบทอดตำแหน่ง  <br />
+                   ประวัติความปลอดภัยในการทำงาน  ประวัติการตรวจสอบภูมิหลัง  ที่อยู่  ข้อมูลผู้รับผลประโยชน์หรือคู่สมรส<br />
+                3. ลายเซ็นต์<br />
+                4. หมายเลข ๔ ตัวสุดท้ายของบัตรประจำตัวประชาชน<br />
+                5. วันเกิดหรืออายุ<br />
+                6. ประวัติทางการทหาร<br />
+                7. ข้อมูลซึ่งเกี่ยวข้องกับบุตร รวมถึงภาพถ่าย
+            </div>
+            <div class="modal-footer">
+                <button type="button"  class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="OK" class="btn btn-primary" data-dismiss="modal">รับทราบ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

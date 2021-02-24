@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using JOB_ADS.Models;
 
 namespace JOB_ADS.Controllers
@@ -26,7 +27,7 @@ namespace JOB_ADS.Controllers
         }
         public ActionResult RegisterForm()
         {
-    
+
             return View();
         }
         public ActionResult JobList(string JOB)
@@ -50,5 +51,22 @@ namespace JOB_ADS.Controllers
 
             return View();
         }
+        public string LoadRegistJoblist(int IDJob)
+        {
+
+            var data = (from TR_JobP in DbFile.ADS_PostJob
+                        where TR_JobP.ID.Equals(IDJob)
+                        select new
+                        {
+                            TR_JobP.ID,
+                            TR_JobP.JOB_Title,
+                            TR_JobP.JOB_Location,
+                            TR_JobP.Salary
+                        }).ToList();
+            string jsonlog = new JavaScriptSerializer().Serialize(data);
+            return jsonlog;
+
+        }
+
     }
 }

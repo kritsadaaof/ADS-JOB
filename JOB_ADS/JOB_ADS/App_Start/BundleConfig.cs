@@ -38,6 +38,9 @@ namespace JOB_ADS
             bundles.Add(new ScriptBundle("~/HomeIndex/js").Include(
                       "~/Scripts/Home/js_Index.js"));
 
+            bundles.Add(new ScriptBundle("~/HomeJobList/js").Include(
+                      "~/Scripts/Home/js_JobList.js"));
+
             bundles.Add(new ScriptBundle("~/RegisterForm/js").Include(
                       "~/Scripts/Home/js_RegisterForm.js"));
 
