@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "FindByDepart";
 }
 @Scripts.Render("~/FindByDepart/js")
@@ -24,24 +23,39 @@
                 <h2 class="section-depart mb-2">แผนก @ViewBag.JobDepart.Department_Name</h2>
             </div>
         </div>
-        <div class="bsc-tbl-st">
-            <table class="table table" id="table-basic">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>ตำแหน่ง</th>
-                        <th>จำนวน</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>ตำแหน่ง</th>
-                        <th>จำนวน</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+        <ul class="job-listings mb-5">
+
+
+
+            @if (ViewBag.JobRegis != null)
+            {
+                int counter = 1;
+                foreach (var RegisJob in ViewBag.JobRegis)
+                {
+                    <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+
+
+                        <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                            <div class="job-listing-position custom-width w-10 mb-3 mb-sm-0">
+                                <h2>@counter</h2>
+                            </div>
+                            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                                <h2>@RegisJob.position</h2>
+                            </div>
+                            <div class="job-listing-location custom-width w-40 mb-3 mb-sm-0 ">
+                                <span class="icon-check" style="color:green"> จำนวน:@RegisJob.number </span><br />
+                            </div>
+                            <div class="job-checkbox-select  mb-3 mb-sm-0 custom-width w-10">
+                                <input type="checkbox" id="CB1">
+                            </div>
+                        </div>
+                    </li>
+
+                    counter = counter + 1;
+                }
+            }
+
+        </ul>
         <div class="row mb-5 justify-content-center">
             <div class="col-md-7 text-center">
                 <a href="#" id="Search_Job" class="btn btn-primary border-width-2 d-none d-lg-inline-block">OK</a>
