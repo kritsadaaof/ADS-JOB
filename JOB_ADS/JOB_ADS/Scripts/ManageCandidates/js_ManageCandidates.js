@@ -19,11 +19,11 @@
             notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
         }
     });
+    $("#ClearSelect").click(function () {
+       location.reload();
+    });
 });
-$("#Clear").click(function () {
 
-    location.reload();
-});
 
 function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify
     $.growl({

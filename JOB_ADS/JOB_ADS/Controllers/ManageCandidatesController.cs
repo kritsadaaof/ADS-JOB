@@ -95,5 +95,21 @@ namespace JOB_ADS.Controllers
              }
 
         }
+        public string LoadRegistCandidates(int IDCandidates)
+        {
+
+            var data = (from TR_Regis in DbFile.ADS_Register
+                        where TR_Regis.ID.Equals(IDCandidates)
+                        select new
+                        {
+                            TR_Regis.ID,
+                            TR_Regis.Re_Title_TH,
+                            TR_Regis.Re_Name_TH,
+                            TR_Regis.Re_Surname_TH
+                        }).ToList();
+            string jsonlog = new JavaScriptSerializer().Serialize(data);
+            return jsonlog;
+
+        }
     }
 }
