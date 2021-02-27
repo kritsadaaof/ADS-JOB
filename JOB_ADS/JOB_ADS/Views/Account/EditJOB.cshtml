@@ -77,23 +77,26 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="job-location">Gender</label><span style="color:seagreen"> [ <i id="GenderDT"></i> ]</span>
-                                                                <select class="selectpicker border rounded" id="Gender" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Gender">
-                                                                    <option value="Male">Male</option>
-                                                                    <option value="Female">Female</option>
-                                                                    <option value="Male/Female">Male/Female</option>
-                                                                </select>
+                        <label for="job-location">Gender</label>
+                        <span style="color:seagreen"> [ <i id="GenderDT"></i> ]</span>
+                        <select class="selectpicker border rounded" id="Gender" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Male/Female">Male/Female</option>
+                        </select>
 
                     </div>
 
                     <div class="form-group">
-                        <label for="job-region">Job Region</label><span style="color:seagreen"> [ <i id="RegionDT"></i> ]</span>
-                        <select class="selectpicker border rounded" id="job-region" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Region">
-                            <option>สงขลา</option>
-                            <option>กรุงเทพ</option>
-                            <option>ระยอง</option>
-                            <option>กำแพงเพชร</option>
-                            <option>ขอนแก่น</option>
+                        <label for="job-region">Department</label><i style="color:red">**</i>
+                        <span style="color:seagreen"> [ <i id="RegionDT"></i> ]</span>
+                        <select class="selectpicker border rounded" id="job-region" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Department">
+                            @foreach (var Departs in ViewBag.Depart)
+                            {
+                                <option value="@Departs.Department_Name">@Departs.Department_Name</option>
+
+                            }
+
                         </select>
                     </div>
 
@@ -119,15 +122,15 @@
 
                         <label class="col-xl-3 col-lg-4  col-md-4">
                             <input id="OPhev" type="checkbox" class="" value="">
-                            <i>Existing Chevron Employee</i>
+                            <i>Selection Project Employee</i>
                         </label>
-                        <label class="col-xl-3 col-lg-4  col-md-4">
+                        <label class="col-xl-3 col-lg-4  col-md-4" hidden>
                             <input id="OPAds" type="checkbox" class="" value="">
                             <i>HOL Adisorn Employee</i>
                         </label>
                         <label class="col-xl-3 col-lg-4  col-md-4">
                             <input id="OPOth" type="checkbox" class="" value="">
-                            <i>Others (General Job Seekers)</i>
+                            <i>General Job</i>
                         </label>
                     </div>
 
@@ -138,7 +141,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="job-description">Status</label> 
+                        <label for="job-description">Status</label>
                         <label class="col-xl-3 col-lg-4  col-md-4">
                             <input id="Status" type="checkbox" class="" value="">
                             <i>Active</i>
@@ -148,7 +151,7 @@
 
                 </form>
                 <div class="form-group">
-                    <label for="company-website-tw d-block">Upload Logo</label> <br>
+                    <label for="company-website-tw d-block">Upload Logo</label><i style="color:red" class="FontSize">(ไฟล์ขนาดไม่เกิน 4,000 KB)</i> <br>
                     <form class="btn btn-primary btn-md btn-file" id="formUP" enctype="multipart/form-data">
                         <span class="icon-picture-o mr-2"></span>
                         Browse File<input type="file" name="file" id="ImgUplode" />
@@ -209,19 +212,19 @@
                                 {
                                     <strong>Status: <i style="color:chocolate">Disable</i></strong>
                                 }
-                            <br />  <strong>@PostJob.Company_Name</strong>
+                                <br />  <strong>@PostJob.Company_Name</strong>
                             </div> <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
                                 <span class="icon-check"> Experience: @PostJob.Experience</span><br />
                                 <span class="icon-check"> Salary: @PostJob.Salary</span><br />
                                 <span class="icon-check"> Gender: @PostJob.Gender</span><br />
                             </div>
-                                   <div class="job-listing-meta">
-                                       @if (@PostJob.JOB_Type == "Part Time")
-                                       {<span class="badge badge-danger">@PostJob.JOB_Type</span>}
+                            <div class="job-listing-meta">
+                                @if (@PostJob.JOB_Type == "Part Time")
+                                {<span class="badge badge-danger">@PostJob.JOB_Type</span>}
 
-                                       @if (@PostJob.JOB_Type == "Full Time")
-                                       {<span class="badge badge-success" style="background-color:#2114c4">@PostJob.JOB_Type</span>}
-                                   </div>
+                                @if (@PostJob.JOB_Type == "Full Time")
+                                {<span class="badge badge-success" style="background-color:#2114c4">@PostJob.JOB_Type</span>}
+                            </div>
                         </div>
                     </li>
 

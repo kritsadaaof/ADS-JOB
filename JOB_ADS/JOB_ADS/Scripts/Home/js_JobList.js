@@ -1,8 +1,20 @@
 ﻿$(document).ready(function () {
-    document.getElementById('CheckJobList').style.display = 'none';
-    document.getElementById('Regist').style.display = '';
+    var List = 1;
+ //     document.getElementById('CheckJobList').style.display = 'none';
+ //   document.getElementById('Regist').style.display = '';
 
 
+    $('#data_4 .input-group.date').datepicker({
+        format: 'dd/mm/yyyy',
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
+
+   
+    /////////////////////เงื่อนไขแสดง Value ของไฟล์ที่เลือก//////////////////////////////
     $('#CVUplode').change(function () {
         if ($('#CVUplode').val() == "") {
             $('#CV').html('Browse CV');
@@ -29,46 +41,170 @@
             $('#CER').html(res);
         }
     });
-    // $('.timepicker').pickatime({});
-    
-     
-
-    //$("#timepicker1").timepicker(); 
-    //**********************เพิ่ม***********************************
-    //$(".Date").datepicker({ format: 'dd/mm/yyyy', autoclose: true, todayBtn: 'linked' })
-   // $(".Date").val(val);
-
-   // $("#Date").datepicker({ format: 'dd/mm/yyyy', autoclose: true, todayBtn: 'linked' })
-  //  $("#Date").val(val);
-
-
+    //////////////////////////////// บันทึกข้อมูล /////////////////////////////////////
     $("#SavePostjob").click(function () {
-        var nFrom = "bottom";
-        var nAlign = "center";
-        var nIcons = $(this).attr('data-icon');
-        var nType = "success";
-        var nAnimIn = $(this).attr('data-animation-in');
-        var nAnimOut = $(this).attr('data-animation-out');
-        var mEss = "บันทึกข้อมูลสำเร็จ";
-        notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
-        setTimeout(
-            function () {
-                location.reload();
-            }, 4000);
+        var Check = "";
+        var Agree = "No";
+        if (document.getElementById("Agree").checked == true) {
+            Agree = "Yes";
+        } 
+        
+        if ($("#NameEN").val() == "") {
+            Check += " -  Name(En) </br>"
+        }
+        if ($("#SurnameEN").val() == "") {
+            Check += " -  Surname(En) </br>"
+        }
+        if ($("#NameTH").val() == "") {
+            Check += " -  ชื่อ(ไทย) </br>"
+        }
+        if ($("#SurnameTH").val() == "") {
+            Check += " -  นามสกุล(ไทย) </br>"
+        }
+        if ($("#BDate").val() == "") {
+            Check += " -  วัน/เดือน/ปี เกิด </br>"
+        }
+        if ($("#Phone").val() == "") {
+            Check += " -  เบอร์โทรศัพท์ </br>"
+        }
+        if ($("#Email").val() == "") {
+            Check += " -  E-Mail </br>"
+        }
+        if ($("#CVUplode").val() == "") {
+            Check += " -  เลือกไฟล์ CV </br>"
+        }
+        if ($("#PICUplode").val() == "") {
+            Check += " -  เลือกไฟล์รูปภาพ </br>"
+        }
+        if ($("#CERUplode").val() == "") {
+            Check += " -  เลือกไฟล์Certificate </br>"
+        } 
+        if ($("#Address").val() == "") {
+            Check += " -  ข้อมูลที่อยู่ </br>"
+        } 
+
+        if (Check != "") {
+            var nFrom = "top";
+            var nAlign = "center";
+            var nIcons = $(this).attr('data-icon');
+            var nType = "warning";
+            var nAnimIn = $(this).attr('data-animation-in');
+            var nAnimOut = $(this).attr('data-animation-out');
+            var mEss = "กรุณากรอกข้อมูลให้ครบ </br> " + Check;
+            var Time = 5000;
+            notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss, Time);
+        }
+        else if (Check == "") {  
+            $.ajax({
+                type: 'POST',
+                data: new FormData($("#formUPCV")[0]),
+                url: "../Home/UploadFiles",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (datacv) {
+                    $.ajax({
+                        type: 'POST',
+                        data: new FormData($("#formUPPIC")[0]),
+                        url: "../Home/UploadFiles",
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (datapic) {
+                            $.ajax({
+                                type: 'POST',
+                                data: new FormData($("#formUPCER")[0]),
+                                url: "../Home/UploadFiles",
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success: function (datacer) {
+                                    for (i = 1; i <= List; i++) {
+                                        $.post(baseUrl + "Home/SaveRegist", {
+                                            TitleEN: $("#TitleEN").val(),
+                                            NameEN: $("#NameEN").val(),
+                                            SurnameEN: $("#SurnameEN").val(),
+                                            TitleTH: $("#TitleTH").val(),
+                                            NameTH: $("#NameTH").val(),
+                                            SurnameTH: $("#SurnameTH").val(),
+                                            BDate: $("#BDate").val(),
+                                            Sex: $("#Sex").val(),
+                                            Phone: $("#Phone").val(),
+                                            Email: $("#Email").val(),
+                                            PositionOld: $("#PositionOld").val(),
+                                            Address: $("#Address").val(),
+                                            datacv: datacv,
+                                            datapic: datapic,
+                                            datacer: datacer,
+                                            Agree: Agree,
+                                            Experience: $("#Ex" + i).val(),
+                                            JobID: $("#Job" + i).val()
+                                        }) ;
+                                    }
+                                    var nFrom = "bottom";
+                                    var nAlign = "center";
+                                    var nIcons = $(this).attr('data-icon');
+                                    var nType = "success";
+                                    var nAnimIn = $(this).attr('data-animation-in');
+                                    var nAnimOut = $(this).attr('data-animation-out');
+                                    var mEss = "บันทึกข้อมูลสำเร็จ";
+                                    var Time = 2000;
+                                    notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss, Time);
+                                    setTimeout(
+                                        function () {
+                                            location.reload();
+                                        }, 4000);
+                                }
+                            }); 
+                        }
+                    });  
+                }
+            });  
+
+
+           
+            
+        }
     });
+
+    function Up(formData) {
+        //alert(Name) 
+        $.ajax({
+            type: 'POST',
+            data: formData,
+            url: "../Home/UploadFiles",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) { 
+            }
+        });  
+    }
+
+    function Ups(formData, Name) {
+        alert(Name);
+        $.post(baseUrl + "Home/UploadFiles", {
+            formData: formData,
+            Name: Name,
+            cache: false,
+                contentType: false,
+                processData: false });
+    }
 
     $("#Clear").click(function () {
-         
-        location.reload();  
+        location.reload(); 
+      //  alert($("#Job1").val());
     });
 
-    $("#OK").click(function () { 
+    $("#OK").click(function () {
         $("#CVUplode").click();
     });
 
-    $("#formUP").click(function () {
-        $("#exampleModalLong").modal('show'); 
+    $("#formUPCV").click(function () {
+        $("#exampleModalLong").modal('show');
     });
+
+
     $("#ApplyJobList").click(function () {
 
         //  $('#tab_logic').append('<tr id="addr' + (1) + '"><td>aaa</td></tr>');
@@ -76,48 +212,45 @@
         //  alert(x);
         // window.location = baseUrl + "Home/JobList?JOB=" + $('#TitleS').val();
 
+
+        /////////////////////////ดึงค่าจาก Checkbox ที่เลือก///////////////////////////
         const checkboxes = document.querySelectorAll('.z:checked');
         let colors = [];
-        var a = 1;
+        
         checkboxes.forEach((checkbox) => {
             colors.push(checkbox.value);
 
-            //////////////////////////////////////////////////////////////////////
+            /////////////////////////////ข้อมูลตำแหน่งที่เลือก////////////////////////////////////
             $.post(baseUrl + "Home/LoadRegistJoblist", {
                 IDJob: checkbox.value
             }).done(function (data) {
                 // alert(data);
                 var pr = $.parseJSON(data);
-               // alert(pr);
+                // alert(pr);
                 $.each(JSON.parse(data), function (i, obj) {
-                    
-                    $('#tab_logic').append('<tr id="addr' + (a) + '"><td>' + (a) + '</td><td>' + pr[i]["JOB_Title"] + '</td><td>' + pr[i]["JOB_Region"] +
-                        '</td><td>' + pr[i]["JOB_Location"] + '</td><td>' + pr[i]["Salary"] + '</td><td>' + " <div class='input-group'><input type='text'class='form-control py-2 px-4' id='Ex" + a + "'><div class='input-group-append'><span class='input-group-text px-2'>ปี</span></div></div>" + '</td></tr>');
-                  // a = a + 1;
-                }); 
-                a++;
-                
 
+                    $('#tab_logic').append('<tr class="FontSize" id="addr' + (List) + '"><td>' + (List) + '</td><td>' + pr[i]["JOB_Title"] + '</td><td>' + pr[i]["JOB_Region"] +
+                        '</td><td>' + pr[i]["JOB_Location"] + '</td><td>' + pr[i]["Salary"] + '</td><td>' + " <div class='input-group'><input type='text'class='form-control py-2 px-4' id='Ex" +
+                        List + "'  placeholder='-'><input type='text'class='form-control py-2 px-4' value=" + pr[i]["ID"] + " id='Job" +
+                        List + "'  placeholder='-' hidden><div class='input-group-append FontSize'><span class='input-group-text px-2'>ปี</span></div></div>" + '</td></tr>');
+                    // a = a + 1;
+                });
+                List++; 
             });
-        });
-       
-        /////////////////////////////////////////////////////////////////////
-        
-
-        if (colors != '') { 
-                    document.getElementById('CheckJobList').style.display = 'none';
-                    document.getElementById('Regist').style.display = ''; 
+        }); 
+        ///////////////////////////////////////////////////////////////////// 
+        if (colors != '') {
+            document.getElementById('CheckJobList').style.display = 'none';
+            document.getElementById('Regist').style.display = '';
         }
-    });
-    // alert(colors);
+    }); 
 });
 
-function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify
+function notify(from, align, icon, type, animIn, animOut, mEssage,Time) { //Notify
     $.growl({
         icon: icon,
         title: ' แจ้งเตือน ',
-        message: mEssage,
-
+        message: mEssage, 
         url: ''
     }, {
         element: 'body',
@@ -129,12 +262,12 @@ function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify
         },
         offset: {
             x: 20,
-            y: 85
+            y: 60
         },
         spacing: 10,
         z_index: 1031,
         delay: 2500,
-        timer: 2000,
+        timer: Time,
         url_target: '_blank',
         mouse_over: false,
         animate: {
@@ -154,4 +287,3 @@ function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify
             '</div>'
     });
 };
- 

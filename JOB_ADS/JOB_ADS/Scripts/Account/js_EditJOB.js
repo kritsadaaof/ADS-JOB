@@ -81,11 +81,15 @@
                 COMPANY: $("#company-name").val(),
                 EXPERIENCE: $("#Experience").val(),
                 SALARY: $("#Salary").val(),
-                GENDER: $("#Gender").val()
+                GENDER: $("#Gender").val(),
+                ImgUplode: $("#ImgUplode").val()
 
             }).done(function (data) {
                 if (data == "S") {
-                    UpImg();
+                  //  alert($("#ImgUplode").val());
+                    if ($("#ImgUplode").val() != "") {
+                        UpImg();
+                    }
                     var nFrom = "bottom";
                     var nAlign = "center";
                     var nIcons = $(this).attr('data-icon');

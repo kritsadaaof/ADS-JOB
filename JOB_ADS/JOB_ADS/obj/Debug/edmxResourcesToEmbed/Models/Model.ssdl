@@ -79,7 +79,16 @@
     <Property Name="Appointment_Date" Type="datetime2" Precision="7" />
     <Property Name="Confirm_Date" Type="datetime2" Precision="7" />
     <Property Name="Update_Date" Type="datetime2" Precision="7" />
-    <Property Name="Re_Img" Type="varchar" MaxLength="50" />
+    <Property Name="BirthDays" Type="nvarchar" MaxLength="10" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+    <Property Name="Address" Type="text" />
+    <Property Name="VC_File" Type="nvarchar" MaxLength="255" />
+    <Property Name="Pic_File" Type="nvarchar" MaxLength="255" />
+    <Property Name="Cer_File" Type="nvarchar" MaxLength="255" />
+    <Property Name="Check" Type="nvarchar" MaxLength="10" />
+    <Property Name="Em_Code" Type="nvarchar" MaxLength="20" />
+    <Property Name="Exp" Type="nvarchar" MaxLength="10" />
+    <Property Name="Job_ID" Type="int" />
   </EntityType>
   <EntityContainer Name="ADS_JOBModelStoreContainer">
     <EntitySet Name="ADS_Master_Department" EntityType="Self.ADS_Master_Department" Schema="dbo" store:Type="Tables" />

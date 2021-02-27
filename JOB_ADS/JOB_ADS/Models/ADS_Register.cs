@@ -34,6 +34,15 @@ namespace JOB_ADS.Models
         public Nullable<System.DateTime> Appointment_Date { get; set; }
         public Nullable<System.DateTime> Confirm_Date { get; set; }
         public Nullable<System.DateTime> Update_Date { get; set; }
-        public string Re_Img { get; set; }
+        public string BirthDays { get; set; }
+        public string Sex { get; set; }
+        public string Address { get; set; }
+        public string VC_File { get; set; }
+        public string Pic_File { get; set; }
+        public string Cer_File { get; set; }
+        public string Check { get; set; }
+        public string Em_Code { get; set; }
+        public string Exp { get; set; }
+        public Nullable<int> Job_ID { get; set; }
     }
 }

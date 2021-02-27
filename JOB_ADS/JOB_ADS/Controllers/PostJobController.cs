@@ -27,15 +27,22 @@ namespace JOB_ADS.Controllers
             }
 
         }
-        
-       [HttpPost]
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        [HttpPost]
         public string SavePostjob(string JOBTITLE, string JOBLOCATION,
             string JOBREGION, string JOBTYPE, string JOBDES,string JOBRQ,
-            string OPTIONc, string OPTIONa, string OPTIONo, string COMPANY, string EXPERIENCE, string SALARY, string GENDER)
+            string OPTIONc, string OPTIONa, string OPTIONo, string COMPANY, string EXPERIENCE, string SALARY, string GENDER,string ImgUplode)
         {
             try
             {
-                Session["IMG"] = JOBTITLE;
+                var Ran = RandomString(5);
+                Session["IMG"] = Ran + JOBTITLE; 
                 var TR_PJ = new ADS_PostJob();
                 TR_PJ.JOB_Title = JOBTITLE;
                 TR_PJ.JOB_Location = JOBLOCATION;
@@ -50,7 +57,10 @@ namespace JOB_ADS.Controllers
                 TR_PJ.Experience = EXPERIENCE;
                 TR_PJ.Salary = SALARY;
                 TR_PJ.Gender = GENDER;
-                TR_PJ.Logo_Image = JOBTITLE+".JPG";
+                if (ImgUplode != "")
+                {
+                    TR_PJ.Logo_Image = Session["IMG"] + ".JPG";
+                }
                 //User
                 TR_PJ.Status = "T";
                 TR_PJ.JOB_CreateDate = DateTime.Now;
@@ -62,13 +72,14 @@ namespace JOB_ADS.Controllers
 
             }
             catch { return "N"; }
-        } 
-     
+        }
+
+       
         public ActionResult UploadFiles(HttpPostedFileBase file)
         {
             if (file != null && file.ContentLength > 0)
                 try
-                {
+                { 
                     string path = Path.Combine(Server.MapPath("~/Content/images/LOGO"),
                     Path.GetFileName(Session["IMG"].ToString() + ".jpg"));
                     file.SaveAs(path);

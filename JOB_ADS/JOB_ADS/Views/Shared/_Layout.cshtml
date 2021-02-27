@@ -18,11 +18,15 @@
     <link rel="stylesheet" href="~/Content/css/quill.snow.css">
 
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="~/Content/css/style.css"> 
+    <link rel="stylesheet" href="~/Content/css/style.css">
     @Scripts.Render("~/bundles/jquery")     <!--เรียกใช้งาน "~/Scripts/jquery-{version}.js" เพื่อให้ JS ของแต่ละ Page ทำงาน-->
     <!-- notification CSS
         ============================================ -->
     <link rel="stylesheet" href="~/Content/css/notification/notification.css">
+
+    <!-- datapicker CSS
+      ============================================ -->
+    <link rel="stylesheet" href="~/Content/css/datapicker/datepicker3.css">
 
 </head>
 <body id="top">
@@ -58,7 +62,8 @@
                             <li class="has-children">
                                 <a class="btn btn-outline-white text-white nav-link btn-Menu" href="#">Jobs</a>
                                 <ul class="dropdown">
-                                    <li><a href="~/Home/JobList?JOB=">Job Listings</a></li>
+                                    <li><a href="~/Home/JobList?JOB=">Job General</a></li>
+                                    <li><a href="~/Home/JobListChevron?JOB=">Job Chevron</a></li>
                                     <li><a href="~/PostJob/Post_Job">Job by Categories</a></li>
                                     @if (Session["User"] != null)
                                     {
@@ -108,7 +113,7 @@
 
                     <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
                         <div class="ml-auto">
-                             @if (Session["User"] == null)
+                            @if (Session["User"] == null)
                             {
                                 <a id="PC_IN_OUT" href="~/Account/Login" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a>
                             }
@@ -164,7 +169,7 @@
                     <div class="col-6 col-md-3 mb-4 mb-md-0">
                         <h4 style="color:white">Connect with us on</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#"><img src="~/Content/images/facebook.jpg" alt="" style="height:65PX" /></a></li> 
+                            <li><a href="#"><img src="~/Content/images/facebook.jpg" alt="" style="height:65PX" /></a></li>
                         </ul>
                     </div>
                 </div>
@@ -202,6 +207,10 @@
     <!--  notification JS
            ============================================ -->
     <script src="~/Content/js/notification/bootstrap-growl.min.js"></script>
+
+    <!-- datapicker JS
+        ============================================ -->
+    <script src="~/Content/js/datapicker/bootstrap-datepicker.js"></script>
 
     <script type="text/javascript">
         var baseUrl = "@Url.Content("~")";
