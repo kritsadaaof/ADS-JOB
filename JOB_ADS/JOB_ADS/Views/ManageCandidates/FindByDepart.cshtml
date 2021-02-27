@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="table-responsive">
-            
+
             <table id="tableDepart" class="table">
                 <thead>
                     <tr>
@@ -54,7 +54,7 @@
 
                                 </td>
                                 <td>
-                                    <strong>จำนวนผู้สมัคร <a style="color:lightgreen">@RegisJob.number</a></strong>
+                                    <strong>จำนวนผู้สมัคร <a style="color:lightgreen" id="CoutCandidates" href="@Url.Action("FindByCandidates","ManageCandidates",new { Position=@RegisJob.position})">@RegisJob.number</a></strong>
                                 </td>
 
                             </tr>
@@ -71,7 +71,7 @@
                     </tr>
                 </tfoot>
             </table>
-                    
+
         </div>
         @* <ul class="job-listings mb-5">
 
@@ -105,13 +105,13 @@
                 }
             }
 
-        </ul>*@
+        </ul>
         <div class="row mb-5 justify-content-center">
             <div class="col-md-7 text-center">
                 <button id="Search_Job" class="btn btn-primary border-width-2 d-none d-lg-inline-block">OK</button>
                 <button onclick="history.go(-1);"class="btn btn-secondary border-width-2 d-none d-lg-inline-block">Clear</button>
             </div>
-        </div>
+        </div>*@
     </div>
         </section>
 

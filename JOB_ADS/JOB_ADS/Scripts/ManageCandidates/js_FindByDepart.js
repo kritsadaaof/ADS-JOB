@@ -1,33 +1,4 @@
-﻿$(document).ready(function () {
-    $.post(baseUrl + "ManageCandidates/LoadDataDepart", {
-        DEPART: $('<%= Session("DEPARTMENT")').val()
-            }).done(function (data) {
-                if (data != "[]") {
-                    var pr = $.parseJSON(data);
-                    $.each(JSON.parse(data), function (i, obj) {
-
-                        $('#table-basic').dataTable().fnAddData([
-                            (i + 1),
-                            pr[i]["Position"],
-                            pr[i]["Number"]
-
-                        ]);
-                    });
-
-                }
-                else {
-                 
-                }
-
-
-               
-            });
-
-        
-       
-   
-});
-
+﻿
 function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify
     $.growl({
         icon: icon,
