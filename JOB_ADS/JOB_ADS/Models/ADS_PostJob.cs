@@ -35,6 +35,5 @@ namespace JOB_ADS.Models
         public string Salary { get; set; }
         public string Gender { get; set; }
         public Nullable<int> Job_Seekers { get; set; }
-        public string Job_Depart { get; set; }
     }
 }

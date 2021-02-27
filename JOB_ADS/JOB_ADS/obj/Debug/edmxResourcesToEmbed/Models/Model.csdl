@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ADS_JOBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="Entities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="ADS_Master_Department">
     <Key>
       <PropertyRef Name="ID" />
@@ -54,7 +54,6 @@
     <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Job_Seekers" Type="Int32" />
-    <Property Name="Job_Depart" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ADS_Register">
     <Key>
@@ -80,11 +79,18 @@
     <Property Name="Appointment_Date" Type="DateTime" Precision="7" />
     <Property Name="Confirm_Date" Type="DateTime" Precision="7" />
     <Property Name="Update_Date" Type="DateTime" Precision="7" />
-    <Property Name="Re_Img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="BirthDay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="Higth" Type="Double" />
+    <Property Name="BirthDays" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="VC_File" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Pic_File" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Cer_File" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Check" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Em_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Exp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Job_ID" Type="Int32" />
   </EntityType>
-  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="ADS_JOBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ADS_Master_Department" EntityType="Self.ADS_Master_Department" />
     <EntitySet Name="ADS_Master_User" EntityType="Self.ADS_Master_User" />
     <EntitySet Name="ADS_PostJob" EntityType="Self.ADS_PostJob" />
