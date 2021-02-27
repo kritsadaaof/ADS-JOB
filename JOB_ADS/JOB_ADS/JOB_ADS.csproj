@@ -1489,13 +1489,6 @@
     <Content Include="Content\scss\style.scss" />
     <Content Include="Content\scss\_custom-variables.scss" />
     <Content Include="Content\scss\_site-navbar.scss" />
-    <EntityDeploy Include="Models\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\js\libs\bootstrap-colorpicker\LICENSE" />
     <Content Include="Content\js\libs\bootstrap-datepicker\LICENSE" />
     <Content Include="Content\js\libs\bootstrap-multiselect\LICENSE" />
@@ -1559,6 +1552,13 @@
     <Content Include="Content\css\theme-default\bootstrap-LICENSE" />
     <Content Include="Content\css\theme-default\font-awesome-LICENSE" />
     <Content Include="Content\css\theme-default\material-design-LICENSE.md" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

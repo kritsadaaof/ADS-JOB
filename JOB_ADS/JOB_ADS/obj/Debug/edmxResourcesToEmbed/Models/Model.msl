@@ -56,6 +56,7 @@
           <ScalarProperty Name="Salary" ColumnName="Salary" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Job_Seekers" ColumnName="Job_Seekers" />
+          <ScalarProperty Name="Job_Depart" ColumnName="Job_Depart" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -83,6 +84,8 @@
           <ScalarProperty Name="Confirm_Date" ColumnName="Confirm_Date" />
           <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
           <ScalarProperty Name="Re_Img" ColumnName="Re_Img" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+          <ScalarProperty Name="Higth" ColumnName="Higth" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

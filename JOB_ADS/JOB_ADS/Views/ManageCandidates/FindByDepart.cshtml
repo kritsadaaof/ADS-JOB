@@ -21,9 +21,59 @@
         <div class="row mb-5 justify-content-center">
             <div class="col-md-7 text-center">
                 <h2 class="section-depart mb-2">แผนก @ViewBag.JobDepart.Department_Name</h2>
+                <p>เลือกตำแหน่งงานจากแผนก @ViewBag.JobDepart.Department_Name</p>
             </div>
         </div>
-        <ul class="job-listings mb-5">
+        <div class="table-responsive">
+            
+            <table id="tableDepart" class="table">
+                <thead>
+                    <tr>
+                        <th>ตำแหน่งงาน</th>
+                        <th>รายละเอียด</th>
+                        <th>จำนวนผู้สมัคร</th>
+                    </tr>
+                </thead>
+                @if (ViewBag.JobRegis != null)
+                {
+                    int counter = 1;
+                    foreach (var RegisJob in ViewBag.JobRegis)
+                    {
+                        <tbody>
+                            <tr>
+                                <td class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                                    <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                                        <h2 style="color:blue">@RegisJob.position</h2>
+                                        <strong style="color:blue">@RegisJob.company</strong><br />
+                                    </div>
+                                </td>
+                                <td>
+
+                                    <span class="icon-check" style="color:blue"> ประสบการณ์:@RegisJob.experience ปี</span><br />
+                                    <span class="icon-check" style="color:blue"> เงินเดือน:@RegisJob.salary</span><br />
+
+                                </td>
+                                <td>
+                                    <strong>จำนวนผู้สมัคร <a style="color:lightgreen">@RegisJob.number</a></strong>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        counter = counter + 1;
+                    }
+                }
+                <tfoot>
+                    <tr>
+
+                        <th>ตำแหน่งงาน</th>
+                        <th>รายละเอียด</th>
+                        <th>จำนวนผู้สมัคร</th>
+                    </tr>
+                </tfoot>
+            </table>
+                    
+        </div>
+        @* <ul class="job-listings mb-5">
 
 
 
@@ -55,13 +105,13 @@
                 }
             }
 
-        </ul>
+        </ul>*@
         <div class="row mb-5 justify-content-center">
             <div class="col-md-7 text-center">
                 <button id="Search_Job" class="btn btn-primary border-width-2 d-none d-lg-inline-block">OK</button>
-                <button id="Clear" class="btn btn-secondary border-width-2 d-none d-lg-inline-block">Clear</button>
+                <button onclick="history.go(-1);"class="btn btn-secondary border-width-2 d-none d-lg-inline-block">Clear</button>
             </div>
         </div>
     </div>
-</section>
+        </section>
 

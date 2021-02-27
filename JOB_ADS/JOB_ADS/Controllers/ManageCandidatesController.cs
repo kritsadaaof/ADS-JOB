@@ -18,7 +18,10 @@ namespace JOB_ADS.Controllers
         {
             public string position { get; set; }
             public int number { get; set; }
-    
+            public string company { get; set; }
+            public string experience { get; set; }
+            public string salary { get; set; }
+
         }
         public ActionResult Manage_Candidates()
         {
@@ -46,19 +49,24 @@ namespace JOB_ADS.Controllers
                  }
                  else
                  { 
-            ViewBag.JobDepart = DbFile.ADS_Master_Department.Where(a => a.Department_Name.Contains(Depart)).Where(a => a.Status.Equals("T")).FirstOrDefault();
+                ViewBag.JobDepart = DbFile.ADS_Master_Department.Where(a => a.Department_Name.Contains(Depart)).Where(a => a.Status.Equals("T")).FirstOrDefault();
                 //ViewBag.JobRegis = DbFile.ADS_Register.DistinctBy(x => x.Re_Position).Where(a => a.Re_Department.Contains(Depart)).ToList();
-            var data = (from x in DbFile.ADS_Register
+                var data = (from x in DbFile.ADS_Register
                       where x.Re_Department.Contains(Depart)
                       group x by x.Re_Position into g
+                      join postjob in DbFile.ADS_PostJob on g.FirstOrDefault().Re_Current_Position equals postjob.JOB_Title
                       select new regis
                       {
                       position = g.Key,
-                      number = g.Count()
-                       }).ToList();
+                      number = g.Count(),
+                      company = postjob.Company_Name,
+                      experience = postjob.Experience,
+                      salary = postjob.Salary
 
-
+                      }).ToList();
                 ViewBag.JobRegis = data;
+               
+                
                 return View();
             }
          }

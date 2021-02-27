@@ -35,5 +35,7 @@ namespace JOB_ADS.Models
         public Nullable<System.DateTime> Confirm_Date { get; set; }
         public Nullable<System.DateTime> Update_Date { get; set; }
         public string Re_Img { get; set; }
+        public string BirthDay { get; set; }
+        public Nullable<double> Higth { get; set; }
     }
 }

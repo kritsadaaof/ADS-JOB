@@ -59,6 +59,7 @@
           <Property Name="Salary" Type="nvarchar" MaxLength="50" />
           <Property Name="Gender" Type="nvarchar" MaxLength="50" />
           <Property Name="Job_Seekers" Type="int" />
+          <Property Name="Job_Depart" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="ADS_Register">
           <Key>
@@ -85,6 +86,8 @@
           <Property Name="Confirm_Date" Type="datetime2" Precision="7" />
           <Property Name="Update_Date" Type="datetime2" Precision="7" />
           <Property Name="Re_Img" Type="varchar" MaxLength="50" />
+          <Property Name="BirthDay" Type="nvarchar" MaxLength="10" />
+          <Property Name="Higth" Type="float" />
         </EntityType>
         <EntityContainer Name="ADS_JOBModelStoreContainer">
           <EntitySet Name="ADS_Master_Department" EntityType="Self.ADS_Master_Department" Schema="dbo" store:Type="Tables" />
@@ -151,6 +154,7 @@
           <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Job_Seekers" Type="Int32" />
+          <Property Name="Job_Depart" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ADS_Register">
           <Key>
@@ -177,6 +181,8 @@
           <Property Name="Confirm_Date" Type="DateTime" Precision="7" />
           <Property Name="Update_Date" Type="DateTime" Precision="7" />
           <Property Name="Re_Img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Higth" Type="Double" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ADS_Master_Department" EntityType="Self.ADS_Master_Department" />
@@ -245,6 +251,7 @@
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Job_Seekers" ColumnName="Job_Seekers" />
+                <ScalarProperty Name="Job_Depart" ColumnName="Job_Depart" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -272,6 +279,8 @@
                 <ScalarProperty Name="Confirm_Date" ColumnName="Confirm_Date" />
                 <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
                 <ScalarProperty Name="Re_Img" ColumnName="Re_Img" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="Higth" ColumnName="Higth" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
