@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ADS_JOBModelStoreContainer" CdmEntityContainer="ADS_JOBEntities">
+  <EntityContainerMapping StorageEntityContainer="ADS_JOBModelStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="ADS_Master_Department">
       <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Master_Department">
         <MappingFragment StoreEntitySet="ADS_Master_Department">
@@ -56,6 +56,7 @@
           <ScalarProperty Name="Salary" ColumnName="Salary" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Job_Seekers" ColumnName="Job_Seekers" />
+          <ScalarProperty Name="Job_Depart" ColumnName="Job_Depart" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -82,16 +83,9 @@
           <ScalarProperty Name="Appointment_Date" ColumnName="Appointment_Date" />
           <ScalarProperty Name="Confirm_Date" ColumnName="Confirm_Date" />
           <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
-          <ScalarProperty Name="BirthDays" ColumnName="BirthDays" />
-          <ScalarProperty Name="Sex" ColumnName="Sex" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="VC_File" ColumnName="VC_File" />
-          <ScalarProperty Name="Pic_File" ColumnName="Pic_File" />
-          <ScalarProperty Name="Cer_File" ColumnName="Cer_File" />
-          <ScalarProperty Name="Check" ColumnName="Check" />
-          <ScalarProperty Name="Em_Code" ColumnName="Em_Code" />
-          <ScalarProperty Name="Exp" ColumnName="Exp" />
-          <ScalarProperty Name="Job_ID" ColumnName="Job_ID" />
+          <ScalarProperty Name="Re_Img" ColumnName="Re_Img" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+          <ScalarProperty Name="Higth" ColumnName="Higth" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

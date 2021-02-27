@@ -54,6 +54,7 @@
     <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Job_Seekers" Type="Int32" />
+    <Property Name="Job_Depart" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ADS_Register">
     <Key>
@@ -79,18 +80,11 @@
     <Property Name="Appointment_Date" Type="DateTime" Precision="7" />
     <Property Name="Confirm_Date" Type="DateTime" Precision="7" />
     <Property Name="Update_Date" Type="DateTime" Precision="7" />
-    <Property Name="BirthDays" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="VC_File" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Pic_File" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Cer_File" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Check" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="Em_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="Exp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="Job_ID" Type="Int32" />
+    <Property Name="Re_Img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BirthDay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Higth" Type="Double" />
   </EntityType>
-  <EntityContainer Name="ADS_JOBEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ADS_Master_Department" EntityType="Self.ADS_Master_Department" />
     <EntitySet Name="ADS_Master_User" EntityType="Self.ADS_Master_User" />
     <EntitySet Name="ADS_PostJob" EntityType="Self.ADS_PostJob" />

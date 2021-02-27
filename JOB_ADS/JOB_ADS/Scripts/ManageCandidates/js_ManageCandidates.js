@@ -1,31 +1,29 @@
 ﻿$(document).ready(function () {
     $("#Find_Candidates").click(function () {
-            $.ajax({
-                type: "post",
-                url: baseUrl + "ManageCandidates/DataFindByDepart",
-                data: { DEPART: $("#DepartmentS").val()},
-                success: function (data) {
-                    if (data != "") {
-                        var pr = $.parseJSON(data);
-                        window.location = baseUrl + "ManageCandidates/FindByDepart";
-                    }
-                    else {
-                        var nFrom = "bottom";
-                        var nAlign = "center";
-                        var nIcons = $(this).attr('data-icon');
-                        var nType = "warning";
-                        var nAnimIn = $(this).attr('data-animation-in');
-                        var nAnimOut = $(this).attr('data-animation-out');
-                        var mEss = "กรุณาเลือกข้อมูลให้ถูกต้อง";
-                        notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
-                        
-                      
-                    }
-                    
-                }
-            });     
+        if ($("#DepartmentS").val() != "" && $("#TitleS").val()=="") {
+            window.location = baseUrl + "ManageCandidates/FindByDepart?Depart=" + $('#DepartmentS').val();
+
+        }
+        else if ($("#TitleS").val() != "" && $("#DepartmentS").val() == "") {
+
+            window.location = baseUrl + "ManageCandidates/FindByCandidates?Position=" + $('#TitleS').val();
+        }
+        else {
+            var nFrom = "bottom";
+            var nAlign = "center";
+            var nIcons = $(this).attr('data-icon');
+            var nType = "warning";
+            var nAnimIn = $(this).attr('data-animation-in');
+            var nAnimOut = $(this).attr('data-animation-out');
+            var mEss = "กรุณาเลือกข้อมูลให้ถูกต้อง";
+            notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
+        }
+    });
+    $("#ClearSelect").click(function () {
+       location.reload();
     });
 });
+
 
 function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify
     $.growl({

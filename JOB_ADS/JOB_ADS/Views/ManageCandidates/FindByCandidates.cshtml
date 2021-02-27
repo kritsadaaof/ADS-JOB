@@ -27,60 +27,105 @@
         <div class="row mb-5 justify-content-start">
             <div class="col-md-7 text-left">
                 <h2 class="section-candidates mb-2"><a style="text-decoration: underline;">ตำแหน่ง</a> @ViewBag.RegisName.Re_Position</h2>
+                    </div>
+                </div>
+                <ul class="job-listings mb-5">
+
+                    @if (ViewBag.RegisList.Count != 0)
+                    {
+                        int counter = 1;
+                        foreach (var RegisList in ViewBag.RegisList)
+                        {
+                            <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+
+
+                                <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                                    <div class="job-listing-position custom-width w-10 mb-3 mb-sm-0">
+                                        <h2>@counter</h2>
+                                    </div>
+                                    <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                                        <h2>@RegisList.Re_Title_TH@RegisList.Re_Name_TH  @RegisList.Re_Surname_TH</h2>
+                                    </div>
+                                    <div class="job-checkbox-select  mb-3 mb-sm-0 custom-width w-10">
+                                        <input type="checkbox" id="Candidates" class="CCandidates" value="@RegisList.ID">
+                                    </div>
+                                </div>
+                            </li>
+
+                            counter = counter + 1;
+                        }
+                    }
+
+
+                </ul>
+
+                <div class="row mb-5 justify-content-center">
+                    <button id="Selected" class="btn btn-primary border-width-2 d-none d-lg-inline-block">OK</button>
+                    <button id="Clear" class="btn btn-secondary border-width-2 d-none d-lg-inline-block">Clear</button>
+                </div>
+
+                <div class="row pagination-wrap" hidden>
+                    <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
+                        <span>Showing 1-10 Of @ViewBag.RegisList.Count Jobs</span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-right">
+                        <div class="custom-pagination ml-auto">
+                            <a href="#" class="prev">Prev</a>
+                            <div class="d-inline-block">
+                                <a href="#" class="active">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                            </div>
+                            <a href="#" class="next">Next</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
-        <ul class="job-listings mb-5">
+        </section>
+        <section class="site-section">
+            <div id="CandidatesList" class="container">
+                <ul class="candidates-listings mt-3">
 
-            @if (ViewBag.RegisList.Count != 0)
-            {
-                int counter = 1;
-                foreach (var RegisList in ViewBag.RegisList)
-                {
-                    <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+                    <li class="text-center"><P style="font-size:18px">รายการ</P></li>
+                    <li class="mb-3">
 
+                        <div class="container">
 
-                        <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-                            <div class="job-listing-position custom-width w-10 mb-3 mb-sm-0">
-                                <h2>@counter</h2>
-                            </div>
-                            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                                <h2>@RegisList.Re_Title_TH@RegisList.Re_Name_TH  @RegisList.Re_Surname_TH</h2>
-                            </div>
-                            <div class="job-checkbox-select  mb-3 mb-sm-0 custom-width w-10">
-                                <input type="checkbox" id="CB1">
+                            <div class="row mt-3">
+                                <table class="table  table-hover Text customers " id="tab_select">
+                                    <thead>
+                                        <tr>
+                                            <th width="5%">ลำดับ</th>
+                                            <th width="10%">คำนำหน้า</th>
+                                            <th width="15%">ชื่อ</th>
+                                            <th width="15%">นามสกุล</th>
+                                            <th width="5%">เปิดอ่าน</th>
+                                            <th width="5%">นัด</th>
+                                            <th width="5%">ยืนยัน</th>
+                                            <th width="5%">ยกเลิก</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                        <div class="row mb-6">
+
+                            <div class="col-xl-4 col-sm-2 col-md-3 col-lg-4 mb-4 mb-lg-0">
+
+                            </div>
+                            <div class="col-xl-4 col-sm-8 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                                <div class="row mb-5 justify-content-center">
+                                        <button id="tabselectOK" class="btn btn-primary border-width-2 d-none d-lg-inline-block">OK</button>
+                                        <button id="tabselectClear" class="btn btn-secondary border-width-2 d-none d-lg-inline-block">Clear</button>
+                                </div>
+                            </div>
+
+                        </div>
                     </li>
-
-                    counter = counter + 1;
-                }
-            }
-
-
-        </ul>
-
-        <div class="row mb-5 justify-content-center">
-            <a id="Selected" class="btn btn-primary border-width-2 d-none d-lg-inline-block">OK</a>
-        </div>
-       
-        <div class="row pagination-wrap" hidden>
-            <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-                <span>Showing 1-10 Of @ViewBag.RegisList.Count Jobs</span>
+                </ul>
             </div>
-            <div class="col-md-6 text-center text-md-right">
-                <div class="custom-pagination ml-auto">
-                    <a href="#" class="prev">Prev</a>
-                    <div class="d-inline-block">
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                    </div>
-                    <a href="#" class="next">Next</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
+        </section>
