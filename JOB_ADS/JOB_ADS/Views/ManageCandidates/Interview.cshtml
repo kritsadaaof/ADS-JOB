@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Interview";
+}
+@Scripts.Render("~/Interview/js")
+
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('../Content/images/hero_1.jpg');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">Find By Candidates</h1>
+                <div class="custom-breadcrumbs">
+                    <a href="~/Home/Index">Home</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>Find By Candidates</strong>/</span>
+                    <span class="text-white"><strong>Interview</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section">
+    <div class="container">
+        <ul class="job-listings">
+
+            @if (ViewBag.interviewCandidates.Count != 0)
+            {
+                foreach (var interview in ViewBag.interviewCandidates)
+                {
+                    <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+
+                        <div class="job-listing-logo">
+                            <img src="~/Content/images/DOC/@interview.Pic_File" alt="No Logo" class="img-fluid">
+                        </div>
+                        <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                                <h2>@interview.Re_Title_TH @interview.Re_Name_TH  @interview.Re_Surname_TH</h2>
+                            </div>
+                            <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+                                <span class="icon-check"> เบอร์โทร: @interview.Re_Phone</span><br />
+                                <span class="icon-check"> E-Mail: @interview.Re_Email</span><br />
+                                <span class="icon-check"> ตำแหน่ง: @interview.Re_Position</span><br />
+                            </div>
+                            <div class="job-listing-meta">
+                                <input id="SaveInterview" type="datetime-local" data-role="calendarpicker" data-calendar-wide-point="md">
+                            </div>
+                        </div>
+
+                    </li>
+                }
+            }
+        </ul>
+
+        <div class="row mb-6">
+
+            <div class="col-xl-4 col-sm-2 col-md-3 col-lg-4 mb-4 mb-lg-0">
+
+            </div>
+            <div class="col-xl-4 col-sm-8 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="row mb-5 justify-content-center">
+                    <button id="OK" class="btn btn-primary border-width-2 d-none d-lg-inline-block">OK</button>
+                    <button id="Clear" class="btn btn-secondary border-width-2 d-none d-lg-inline-block">Clear</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+

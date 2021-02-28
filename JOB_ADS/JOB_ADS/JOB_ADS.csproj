@@ -1574,6 +1574,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\ManageCandidates\js_FindByCandidates.js" />
     <Content Include="Scripts\ManageCandidates\js_FindByDepart.js" />
+    <Content Include="Scripts\ManageCandidates\js_Interview.js" />
     <Content Include="Scripts\ManageCandidates\js_ManageCandidates.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\PostJob\js_Postjob.js" />
@@ -1599,9 +1600,9 @@
     <Content Include="Views\ManageCandidates\Manage_Candidates.cshtml" />
     <Content Include="Views\ManageCandidates\FindByDepart.cshtml" />
     <Content Include="Views\ManageCandidates\FindByCandidates.cshtml" />
-    <Content Include="Views\ManageCandidates\CandidatesDetail.cshtml" />
     <Content Include="Views\Home\RegisterForm.cshtml" />
     <Content Include="Views\Home\JobListChevron.cshtml" />
+    <Content Include="Views\ManageCandidates\Interview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
