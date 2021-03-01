@@ -117,6 +117,22 @@ namespace JOB_ADS.Controllers
             return jsonlog;
 
         }
+        [HttpPost]
+        public string saveInterviewer(int ID,DateTime INTERVIEWDATE)
+        {
+           
+            try
+            {
+
+                var Regis = DbFile.ADS_Register.Where(a => a.ID.Equals(ID)).FirstOrDefault();
+                var TR_Regis = new ADS_Register();
+                TR_Regis.Appointment_Date = INTERVIEWDATE;
+                DbFile.SaveChanges();
+                return "S";
+
+            }
+            catch { return "N"; }
+        }
         public ActionResult Interview(int ID)
         {
             if (Session["User"] == null)
@@ -127,11 +143,12 @@ namespace JOB_ADS.Controllers
             }
             else
             {
-          
+           
                 ViewBag.interviewCandidates = DbFile.ADS_Register.Where(a => a.ID.Equals(ID)).ToList();
                 return View();
+                }
                 
-            }
+            
 
         }
     }

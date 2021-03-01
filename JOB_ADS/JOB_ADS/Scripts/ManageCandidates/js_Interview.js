@@ -5,8 +5,43 @@
     $("#Clear").click(function () {
         location.reload();
     });
+    $("#OK").click(function (e) {
+        alert("")
+        if ($("#SaveInterview").val() != "") {
+            setTimeout(
+                function () {
+                    $.post(baseUrl + "ManageCandidates/saveInterviewer", {
+                        ID: $("#IntDate").val(),
+                        INTERVIEWDATE: $("#SaveInterview").val()
+                    }).done(function (data) {
+                        if (data == "S") {
+                            UpImg();
+                            var nFrom = "bottom";
+                            var nAlign = "center";
+                            var nIcons = $(this).attr('data-icon');
+                            var nType = "success";
+                            var nAnimIn = $(this).attr('data-animation-in');
+                            var nAnimOut = $(this).attr('data-animation-out');
+                            var mEss = "บันทึกข้อมูลสำเร็จ";
+                            notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
+                        }
+                    });
+                }, 2000);    
+        }
+        else {
+            var nFrom = $(this).attr('data-from');
+            var nAlign = $(this).attr('data-align');
+            var nIcons = $(this).attr('data-icon');
+            var nType = "danger";
+            var nAnimIn = $(this).attr('data-animation-in');
+            var nAnimOut = $(this).attr('data-animation-out');
+            var mEss = "กรุณาบันทึกวันที่นัดหมายให้เรียบร้อย";
+            notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
+        }
+    });
+
+}); 
     
-});
 
 
 function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify
