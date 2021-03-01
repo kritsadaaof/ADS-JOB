@@ -64,13 +64,10 @@
                                 <ul class="dropdown">
                                     <li><a href="~/Home/JobList?JOB=">Job General</a></li>
                                     <li><a href="~/Home/JobListChevron?JOB=">Job Chevron</a></li>
-                                    <li><a href="~/PostJob/Post_Job">Job by Categories</a></li>
                                     @if (Session["User"] != null)
                                     {
+                                        <li><a href="~/PostJob/Post_Job">Create Post a Job</a></li>
                                         <li><a href="~/Account/EditJOB">Edit Job</a></li>
-                                    }
-                                    @if (Session["User"] != null)
-                                    {
                                         <li><a href="~/ManageCandidates/Manage_Candidates">Manage Candidates</a></li>
                                     }
                                 </ul>
