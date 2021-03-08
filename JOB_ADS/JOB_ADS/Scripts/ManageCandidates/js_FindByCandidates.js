@@ -2,40 +2,8 @@
     $("#Clear").click(function () {
         location.reload();
     });
-    $("#Selected").click(function () {
-        const checkboxes = document.querySelectorAll('.CCandidates:checked');
-        let colors = [];
-        var a = 1;
-        checkboxes.forEach((checkbox) => {
-            colors.push(checkbox.value);
-            $.post(baseUrl + "ManageCandidates/LoadRegistCandidates", {
-                IDCandidates: checkbox.value
-            }).done(function (data) {
-                
-                var pr = $.parseJSON(data);
-             
-                $.each(JSON.parse(data), function (i, obj) {
-
-                    $('#tab_select').append('<tr id="addr' + (a) + '"><td>' + (a) + '</td><td>' + pr[i]["Re_Title_TH"] + '</td><td>' + pr[i]["Re_Name_TH"] +
-                        '</td><td>' + pr[i]["Re_Surname_TH"] + '</td></tr>');
-                    
-                });
-                a++;
 
 
-            });
-        });
-
-        
-
-
-        //if (colors != '') {
-           //document.getElementById('CheckJobList').style.display = 'none';
-           //document.getElementById('Regist').style.display = '';
-        //}
-   
-    });
-  
 });
 
 function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify
