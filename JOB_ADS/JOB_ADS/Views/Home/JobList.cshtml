@@ -4,7 +4,7 @@
 }
 
 @Scripts.Render("~/HomeJobList/js")
- 
+
 
 <section class="section-hero overlay inner-page bg-image" style="background-image: url('../Content/images/hero_1.jpg');" id="home-section">
     <div class="container">
@@ -24,7 +24,8 @@
 
         <div class="row mb-5 justify-content-center">
             <div class="col-md-7 text-center">
-                <h2 class="section-title mb-2">@ViewBag.PostList.Count Job Listed</h2>
+
+                <h5 class="section-title font-weight-bold mb-2"><a style="text-decoration: underline;font-size:22px;">@ViewBag.PostList.Count รายการ (ทั่วไป)</a></h5>
             </div>
         </div>
 
@@ -48,9 +49,10 @@
 
                         <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
                             <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                                <h2>@PostJob.JOB_Title</h2>
+                                @PostJob.JOB_Title<br />
                                 <strong>@PostJob.Company_Name</strong><br />
-                                <strong>Update @PostJob.JOB_UpdateDate</strong>
+                                <strong>Update @PostJob.JOB_UpdateDate</strong><br />
+                                <strong>แผนก @PostJob.JOB_Region</strong>
                             </div> <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
                                 <span class="icon-check"> Experience: @PostJob.Experience</span><br />
                                 <span class="icon-check"> Salary: @PostJob.Salary</span><br />
@@ -166,63 +168,61 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-3" hidden>
                             <i class="text-black" for="fname">เพศ</i><i style="color:red">*</i>
                             <select id="Sex" class="form-control  FontSize">
                                 <option value="ชาย">ชาย</option>
                                 <option value="หญิง">หญิง</option>
+                                <option value="Non" selected>Non</option>
                             </select>
                         </div>
 
                         <div class="col-md-3">
                             <i class="text-black" for="fname"><i>เบอร์โทร</i></i><i style="color:red">*</i>
-                            <input type="text" id="Phone" class="form-control FontSize" placeholder="Tel.">
+                            <input type="text" id="Phone" class="form-control FontSize" placeholder="e.g. 081-88888888" onkeyup="this.value=this.value.replace(/[^0-9.-]/g,'')">
                         </div>
 
                         <div class="col-md-3 ">
-                            <i class="text-black" for="fname"><i>E-Mail</i></i><i style="color:red">*</i>
-                            <input type="email" id="Email" class="form-control FontSize" placeholder="กรอกข้อมูลEmail">
+                            <i class="text-black" for="fname"><i>E-Mail</i></i><i style="color:red">*</i><i id="result"></i>
+                            <input type="email" id="Email" class="form-control FontSize" placeholder="e.g. Adisorn@abc.com">
+                        </div>
+                        <div class="col-md-3 ">
+                            <i class="text-black mt-3" for="fname"><i>ตำแหน่งปัจจุบัน</i></i>
+                            <input type="text" id="PositionOld" class="form-control FontSize" placeholder="กรอกข้อมูลตำแหน่งปัจจุบัน">
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-3 mb-4 mb-md-0 text-left">
-                            <i class="text-black mt-3" for="fname"><i>ตำแหน่งเดิม</i></i><i style="color:burlywood">&nbsp; (Chevron)</i>
-                            <input type="text" id="PositionOld" class="form-control FontSize" placeholder="กรอกข้อมูลตำแหน่งเดิม">
-                            <form class="btn  btn-file" id="formUPCV" enctype="multipart/form-data">
-                                <span class="icon-file-pdf-o mr-2"></span>
-                                <i id="CV"> Browse CV</i><input type="file" name="file" id="CVUplode" hidden />
+                            <form class="btn  btn-file border-dark" style="background-color:darkgrey" id="formUPCV" enctype="multipart/form-data">
+                                <span style="color:red" class="icon-file-pdf-o mr-2"></span>
+                                <i id="CV" style="color:white"> แนบประวัติการทำงาน</i><input type="file" name="file" id="CVUplode" hidden />
                                 <!--  <i id="CV" style="color:red">**</i> -->
                             </form>
 
-                            <form class="btn  btn-file" id="formUPPIC" enctype="multipart/form-data">
-                                <span class="icon-file-pdf-o mr-2"></span>
-                                <i id="PIC"> Browse Pic</i><input type="file" name="file" id="PICUplode" />
+                            <form class="btn  btn-file border-dark mt-1" style="background-color:darkgrey" id="formUPPIC" enctype="multipart/form-data">
+                                <span style="color:red" class="icon-file-pdf-o mr-2"></span>
+                                <i id="PIC" style="color:white"> แนบรูปถ่ายตัวเอง</i><input type="file" name="file" id="PICUplode" />
                             </form>
-                            <form class="btn  btn-file" id="formUPCER" enctype="multipart/form-data">
-                                <span class="icon-file-pdf-o mr-2"></span>
-                                <i id="CER"> Browse Certificate</i><input type="file" name="file" id="CERUplode" />
+                            <form class="btn  btn-file border-dark mt-1" style="background-color:darkgrey" id="formUPCER" enctype="multipart/form-data">
+                                <span style="color:red" class="icon-file-pdf-o mr-2"></span>
+                                <i id="CER" style="color:white"> แนบประกาศนียบัตร</i><input type="file" name="file" id="CERUplode" />
                             </form>
-                            <br /><i class="FontSize" style="color:orangered">&nbsp;* ขนาดไฟล์ไม่เกิน 4,000 KB</i>
+                            <br /><i class="FontSize" style="color:orangered">&nbsp;* ขนาดไฟล์ไม่เกิน 4 MB</i>
                         </div>
                         <div class="col-md-9 col-sm-12 col-xs-12 margin-bottom-1">
-                            <i class="text-black" for="fname">ที่อยู่</i><i style="color:red">*</i>
+                            <i class="text-black" for="fname">ที่อยู่</i>
                             <textarea class="form-control FontSize" rows="6" id="Address" name="address" placeholder="กรอกที่อยู่"></textarea>
 
                         </div>
-                    </div> 
+                    </div>
                     <div class="row mt-3">
 
                         <div class="col-md-4 ">
 
                         </div>
-                            <div class="form-group col-md-4 mb-md-0">
-                                <label class="">
-                                    <input id="Agree" type="checkbox" class="" value="">
-                                    <i style="color:red">ยืนยันการเปิดเผยข้อมูลให้กับ Chevron </i>
-                                </label>
-                            </div>
-                        </div>
+
                     </div>
+                </div>
 
             </li>
         </ul>
@@ -259,10 +259,10 @@
                     <div class="col-xl-4 col-sm-8 col-md-6 col-lg-4 mb-4 mb-lg-0">
                         <div class="row">
                             <div class="col-6">
-                                <button id="SavePostjob" type="button" class="btn btn-block btn-primary btn-md"><span class="icon-save mr-2"></span>Save Job</button>
+                                <button id="SavePostjob" type="button" class="btn btn-block btn-primary btn-md"><span class="icon-save mr-2"></span>สมัครงาน</button>
                             </div>
                             <div class="col-6">
-                                <button id="Clear" type="button" class="btn btn-block btn-light btn-md"><span class="icon-clear_all mr-2"></span>Clear</button>
+                                <button id="Clear" type="button" class="btn btn-block btn-light btn-md"><span class="icon-clear_all mr-2"></span>ล้างข้อมูล</button>
 
                             </div>
                         </div>
@@ -305,6 +305,44 @@
             <div class="modal-footer">
                 <button type="button" id="OK" class="btn btn-primary" data-dismiss="modal">รับทราบ</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">ไม่ยอมรับ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<textarea class="form-control FontSize" rows="6" id="DetailUserSenmail" name="" placeholder="" hidden> 
+
+I'd like to inform you that our hiring team is currently reviewing all applications and any information given will be held strictly confidential. 
+We will contact you if a job matching your skills opens in the near future.
+
+We appreciate your interest in our company.
+
+Best Regards,
+Adisorn Recruitment Team
+
+** Please do not reply back to this e-mail. For further information please write to the email: recruitteams@adisorn-skl.com
+</textarea>
+<div class="modal fade" id="ModalLongSensitive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 style="font-family:Tahoma" class="modal-title" id="exampleModalLongTitle">นโยบายการคุ้มครองข้อมูลส่วนบุคคลด้านทรัพยากรบุคคล</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea class="form-control FontSize" rows="145" id="DetailUserSenmail" name="" placeholder=""> 
+                @ViewBag.Sensitive.Text
+                </textarea>
+            </div>
+            <div class=" text-center">
+                <div class="form-group col-md-12 mb-md-0">
+                    <label class="">
+                        <input id="Agree" type="checkbox" class="" value="">
+                        <i style="color:red">ยืนยันการเปิดเผยข้อมูลส่วนบุคคลให้กับ Adisorn Songkhla Co.,Ltd และ บริษัทคู่สัญญา </i>
+                    </label>
+                </div>
             </div>
         </div>
     </div>

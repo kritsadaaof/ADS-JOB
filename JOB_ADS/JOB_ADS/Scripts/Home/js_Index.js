@@ -1,6 +1,28 @@
 ﻿$(document).ready(function () {  
     $("#Search_Job").click(function () { 
-        window.location = baseUrl + "Home/JobList?JOB=" + $('#TitleS').val();
+       
+
+        if ($("#DepartmentS").val() != "" && $("#TitleS").val() == "") {
+            window.location = baseUrl + "Home/JobListChevron?JOB=" + $('#DepartmentS').val();
+
+        }
+        else if ($("#TitleS").val() != "" && $("#DepartmentS").val() == "") {
+            window.location = baseUrl + "Home/JobListChevron?JOB=" + $('#TitleS').val();
+        }
+        else if ($("#TitleS").val() == "" && $("#DepartmentS").val() == "") {
+            window.location = baseUrl + "Home/JobListChevron?JOB=" + $('#TitleS').val();
+        }
+        else {
+            var nFrom = "bottom";
+            var nAlign = "center";
+            var nIcons = $(this).attr('data-icon');
+            var nType = "warning";
+            var nAnimIn = $(this).attr('data-animation-in');
+            var nAnimOut = $(this).attr('data-animation-out');
+            var mEss = "กรุณาเลือกข้อมูลให้ถูกต้อง";
+            notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
+            location.reload();
+        }
     });
 });
 

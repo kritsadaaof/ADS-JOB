@@ -3485,7 +3485,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     .dropdown-item.active, .dropdown-item:active {
         color: #fff;
         text-decoration: none;
-        background-color: #89ba16
+        background-color: #a70808
     }
 
     .dropdown-item.disabled, .dropdown-item:disabled {
@@ -10532,7 +10532,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 }
 
 .text-primary {
-    color: #89ba16 !important
+    color: #a70808 !important
 }
 
 a.text-primary:focus, a.text-primary:hover {

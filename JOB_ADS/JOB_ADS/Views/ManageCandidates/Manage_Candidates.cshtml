@@ -9,51 +9,58 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-md-12">
 
-                <div class="mb-5 text-center" style="margin-top:15%">
-                    <h1 class="text-white font-weight-bold">ค้นหาผู้สมัคร</h1>
+                <div class="mb-5 text-center" style="">
+                    <h2 class="text-white font-weight-bold">ค้นหาผู้สมัคร</h2>
 
                 </div>
                 <form method="post" class="search-jobs-form">
                     <div class="row mb-5">
-
-                        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3 mb-4 mb-lg-0 text-right">
-                            <label class="text-white" for="fname">ตำแหน่ง</label>
-                        </div>
-                        <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 mb-4">
-                            <select class="selectpicker form-control" data-live-search="true" id="TitleS" title='ค้นหาจากตำแหน่ง...'>
-                                @foreach (var Title in ViewBag.Titles)
-                                {
-                                    <option value="@Title.Re_Position">@Title.Re_Position</option>
-                                }
-                            </select>
-                        </div>
-                        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3 mb-4 mb-lg-0">
+                        <div class="col-xl-3 row">
 
                         </div>
-                        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3 mb-4 mb-lg-0 text-right">
-                            <label class="text-white" for="fname">แผนก</label>
+                        <div class="col-xl-6 row">
+                            <div class="col-xl-4 col-sm-3 col-md-3 col-lg-3 mb-4 mb-lg-0 text-right">
+                                <label class="text-white" for="fname">ตำแหน่ง</label>
+                            </div>
+                            <div class="col-xl-8 col-sm-6 col-md-6 col-lg-6 mb-4">
+                                <select class="selectpicker form-control" data-live-search="true" id="TitleS" title='ค้นหาจากตำแหน่ง...'>
+                                    @foreach (var Title in ViewBag.Titles)
+                                    {
+                                        <option value="@Title.Re_Position">@Title.Re_Position</option>
+                                    }
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 mb-4">
-                            <select class="selectpicker form-control" data-live-search="true" id="DepartmentS" title='ค้นหาจากแผนก...'>
-                                @foreach (var Depart in ViewBag.Departs)
-                                {
-                                    <option value="@Depart.Department_Name">@Depart.Department_Name</option>
-                                }
-                            </select>
+                        <div class="col-xl-3 row">
                         </div>
-                        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3 mb-4 mb-lg-0">
+                        <div class="col-xl-3 row">
+                        </div>
+                        <div class="col-xl-6 row">
+                            <div class="col-xl-4 col-sm-3 col-md-3 col-lg-3 mb-4 mb-lg-0 text-right">
+                                <label class="text-white" for="fname">แผนก</label>
+                            </div>
+                            <div class="col-xl-8 col-sm-6 col-md-6 col-lg-6 mb-4">
+                                <select class="selectpicker form-control" data-live-search="true" id="DepartmentS" title='ค้นหาจากแผนก...'>
+                                    @foreach (var Depart in ViewBag.Departs)
+                                    {
+                                        <option value="@Depart.Department_Name">@Depart.Department_Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
 
+                        <div class="col-xl-3 row">
                         </div>
-                        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3 mb-4 mb-lg-0">
+                        <div class="col-xl-5 row">
+                        </div>
 
-                        </div>
 
                         <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 mb-4 mb-lg-0">
-                            <button id="Find_Candidates" type="button" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="icon-circle-o-notch mr-2"></span>OK</button>
+                            <button id="Find_Candidates" type="button" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="icon-search mr-2"></span>ค้นหา</button>
                             <!-- <a id="Find_Candidates" class="btn btn-primary border-width-2 d-none d-lg-inline-block" hidden>OK</a> -->
-                            <button id="ClearSelect" class="btn btn-secondary border-width-2 d-none d-lg-inline-block">Clear</button>
+                            <button id="ClearSelect" class="btn btn-secondary border-width-2 d-none d-lg-inline-block "><span class="icon-clear_all mr-2"></span>เคลียร์</button>
                         </div>
-                        
+
 
 
                     </div>

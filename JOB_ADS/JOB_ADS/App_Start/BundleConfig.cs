@@ -55,6 +55,8 @@ namespace JOB_ADS
 
             bundles.Add(new ScriptBundle("~/FindByDepart/js").Include(
                       "~/Scripts/ManageCandidates/js_FindByDepart.js"));
+            bundles.Add(new ScriptBundle("~/js_Admin_Dep/js").Include(
+                      "~/Scripts/ManageCandidates/js_Admin_Dep.js")); 
         }
     }
 }

@@ -1,4 +1,13 @@
 ﻿$(document).ready(function () { 
+    $('#data_4 .input-group.date').datepicker({
+        format: 'dd/mm/yyyy',
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
+
     $("#SavePostjob").click(function () {
         var C, A, O;
         if (document.getElementById("OPhev").checked == true) {
@@ -12,7 +21,7 @@
         }
         if ($("#job-title").val() != ""
             && $("#job-location").val() != ""
-            && $("#job-region").val() != ""
+            && $("#job-region").val() != "" //แผนก
             && $("#Job-description").val() != ""
             && $("#Job-requirement").val() != "") {
             $.post(baseUrl + "PostJob/SavePostjob", {
@@ -28,6 +37,10 @@
                 EXPERIENCE: $("#Experience").val(),
                 SALARY: $("#Salary").val(),
                 GENDER: $("#Gender").val(),
+                BULOCATION: $("#Bu_Location").val(),
+                DATECLOSE: $("#CDate").val() + " " + $("#CTime").val(),
+                ROTATION: $("#Rotation_Ro").val(),
+                TRAVEL: $("#Travel_R").val(),
                 ImgUplode: $("#ImgUplode").val()
 
             }).done(function (data) {

@@ -35,5 +35,9 @@ namespace JOB_ADS.Models
         public string Salary { get; set; }
         public string Gender { get; set; }
         public Nullable<int> Job_Seekers { get; set; }
+        public Nullable<System.DateTime> Job_Close { get; set; }
+        public string BU_Loaction { get; set; }
+        public string Job_Rotational_Roster { get; set; }
+        public string Job_Travel_Requirement { get; set; }
     }
 }

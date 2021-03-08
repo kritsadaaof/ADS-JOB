@@ -9,19 +9,19 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-md-12">
 
-                <div class="mb-5 text-center" style="margin-top:15%">
+                <div class="mb-5 text-center" style="margin-top:10%">
                     <h1 class="text-white font-weight-bold">The Easiest Way To Get Your Dream Job</h1>
                     <h2 class="text-white font-weight-bold">And Apply With Just 1 Click</h2>
                     <p>ค้นหางานที่ตรงกับความต้องการของคุณ...</p>
                 </div>
                 <form method="post" class="search-jobs-form">
                     <div class="row mb-5">
-                        <div class="col-xl-3  col-md-1 col-lg-2 mb-4 mb-lg-0">
+                        <div class="col-xl-2  col-md-1 col-lg-2 mb-4 mb-lg-0">
 
                         </div>
                         <div class="col-xl-3 col-sm-6 col-md-5 col-lg-4 mb-4 mb-lg-0">
                             <div class="form-control form-control-lg">
-                                <select class="selectpicker" data-live-search="true" id="TitleS" title='ค้นหาจากลูกค้า...'>
+                                <select class="selectpicker" data-live-search="true" id="TitleS" title='ค้นหาจากตำแหน่ง...'>
                                     @foreach (var PostJob in ViewBag.PostJob)
                                     {
                                         <option value="@PostJob.JOB_Title">@PostJob.JOB_Title</option>
@@ -31,10 +31,22 @@
                             </div>
                         </div>
 
-                        <!--   <div class="col-12 col-sm-5 col-md-5 col-lg-3 mb-4 mb-lg-0" hidden>
-                            <input id="TitleS" type="text" class="form-control form-control-lg" placeholder="Job title">
+                        <div class="col-xl-3 col-sm-6 col-md-5 col-lg-4 mb-4 mb-lg-0">
+                            <div class="form-control form-control-lg">
+                                <select class="selectpicker" data-live-search="true" id="DepartmentS" title='ค้นหาจากแผนก...'>
+                                    @foreach (var PostJob in ViewBag.Dep)
+                                    {
+                                        <option value="@PostJob.Department_Name">@PostJob.Department_Name</option>
+
+                                    }
+                                </select>
+                            </div>
                         </div>
-                         -->
+
+                        <!--   <div class="col-12 col-sm-5 col-md-5 col-lg-3 mb-4 mb-lg-0" hidden>
+        <input id="TitleS" type="text" class="form-control form-control-lg" placeholder="Job title">
+    </div>
+     -->
                         <div class="col-xl-3 col-sm-5 col-md-5 col-lg-4 mb-4 mb-lg-0">
                             <a href="#" id="Search_Job" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search Job</a>
 
@@ -53,8 +65,8 @@
     <div class="container">
 
         <div class="row mb-5 justify-content-center">
-            <div class="col-md-7 text-center">
-                <h2 class="section-title mb-2">@ViewBag.PostJob.Count Job Listed</h2>
+            <div class="col-md-7 text-center"> 
+                <h5 class="section-title font-weight-bold mb-2"><a style="text-decoration: underline;font-size:22px;">@ViewBag.PostJob.Count รายการ</a></h5>
             </div>
         </div>
 
@@ -78,9 +90,10 @@
 
                         <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
                             <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                                <h2>@PostJob.JOB_Title</h2>
-                                <strong>@PostJob.Company_Name</strong><br />
-                                <strong>Update @PostJob.JOB_UpdateDate</strong>
+                                @PostJob.JOB_Title<br />
+                                <strong>บริษัท @PostJob.Company_Name</strong><br />
+                                <strong>Update @PostJob.JOB_UpdateDate</strong><br />
+                                <strong>แผนก @PostJob.JOB_Region</strong>
                             </div>
                             <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
                                 <span class="icon-check"> Experience: @PostJob.Experience</span><br />

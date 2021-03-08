@@ -37,10 +37,13 @@ namespace JOB_ADS.Controllers
         [HttpPost]
         public string SavePostjob(string JOBTITLE, string JOBLOCATION,
             string JOBREGION, string JOBTYPE, string JOBDES,string JOBRQ,
-            string OPTIONc, string OPTIONa, string OPTIONo, string COMPANY, string EXPERIENCE, string SALARY, string GENDER,string ImgUplode)
+            string OPTIONc, string OPTIONa, string OPTIONo, string COMPANY,
+            string EXPERIENCE, string SALARY, string GENDER,string ImgUplode,
+            string BULOCATION,string DATECLOSE,string ROTATION,string TRAVEL)
         {
             try
             {
+               
                 var Ran = RandomString(5);
                 Session["IMG"] = Ran + JOBTITLE; 
                 var TR_PJ = new ADS_PostJob();
@@ -57,6 +60,14 @@ namespace JOB_ADS.Controllers
                 TR_PJ.Experience = EXPERIENCE;
                 TR_PJ.Salary = SALARY;
                 TR_PJ.Gender = GENDER;
+                TR_PJ.BU_Loaction = BULOCATION;
+                if (DATECLOSE != " ")
+                {
+                    DateTime oDate = DateTime.Parse(DATECLOSE);
+                    TR_PJ.Job_Close = oDate;
+                }
+                TR_PJ.Job_Rotational_Roster = ROTATION;
+                TR_PJ.Job_Travel_Requirement = TRAVEL;
                 if (ImgUplode != "")
                 {
                     TR_PJ.Logo_Image = Session["IMG"] + ".JPG";
