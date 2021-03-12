@@ -1,7 +1,41 @@
 ﻿$(document).ready(function () {  
     $("#Search_Job").click(function () { 
-        window.location = baseUrl + "Home/JobList?JOB=" + $('#TitleS').val();
+       
+
+        if ($("#DepartmentS").val() != "" && $("#TitleS").val() == "") {
+            window.location = baseUrl + "Home/JobListChevron?JOB=" + $('#DepartmentS').val();
+
+        }
+        else if ($("#TitleS").val() != "" && $("#DepartmentS").val() == "") {
+            window.location = baseUrl + "Home/JobListChevron?JOB=" + $('#TitleS').val();
+        }
+        else if ($("#TitleS").val() == "" && $("#DepartmentS").val() == "") {
+            window.location = baseUrl + "Home/JobListChevron?JOB=" + $('#TitleS').val();
+        }
+        else {
+            var nFrom = "bottom";
+            var nAlign = "center";
+            var nIcons = $(this).attr('data-icon');
+            var nType = "warning";
+            var nAnimIn = $(this).attr('data-animation-in');
+            var nAnimOut = $(this).attr('data-animation-out');
+            var mEss = "ค้นหาได้ 1 เงื่อนไข";
+            notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, mEss);
+            setTimeout(
+                function () {
+                    location.reload();
+                }, 4000);
+        }
     });
+    $('#TitleS').change(function () { 
+        //  document.getElementById('FormCreateSR').style.display = 'none';
+       // alert($(this).val());
+         
+       // document.getElementById("DepartmentS").selected = "false";
+      //  $("#DepartmentS option").remove();
+ 
+    });
+
 });
 
 function notify(from, align, icon, type, animIn, animOut, mEssage) { //Notify

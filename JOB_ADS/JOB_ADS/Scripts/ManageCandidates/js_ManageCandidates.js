@@ -1,12 +1,16 @@
 ﻿$(document).ready(function () {
     $("#Find_Candidates").click(function () {
-        if ($("#DepartmentS").val() != "" && $("#TitleS").val()=="") {
-            window.location = baseUrl + "ManageCandidates/FindByDepart?Depart=" + $('#DepartmentS').val();
+        if ($("#DepartmentS").val() != "" && $("#TitleS").val() == "") {
+         //   window.location = baseUrl + "ManageCandidates/FindByDepart?Depart=" + $('#DepartmentS').val();
+            window.location = baseUrl + "ManageCandidates/Admin_Dep?Depart=" + $('#DepartmentS').val();
 
         }
         else if ($("#TitleS").val() != "" && $("#DepartmentS").val() == "") {
-
-            window.location = baseUrl + "ManageCandidates/FindByCandidates?Position=" + $('#TitleS').val();
+   //         alert($('#TitleS').val());
+            window.location = baseUrl + "ManageCandidates/Admin_Dep?Depart=" + $('#TitleS').val();
+        }
+        else if ($("#TitleS").val() == "" && $("#DepartmentS").val() == "") {
+            window.location = baseUrl + "ManageCandidates/Admin_Dep?Depart=";
         }
         else {
             var nFrom = "bottom";

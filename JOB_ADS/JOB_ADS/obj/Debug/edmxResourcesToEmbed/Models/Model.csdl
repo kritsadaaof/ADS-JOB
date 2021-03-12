@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Entities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="ADS_JOBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADS_Candidate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Re_ID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Time" Type="Time" Precision="7" />
+    <Property Name="UserApp" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="ADS_Master_Department">
     <Key>
       <PropertyRef Name="ID" />
@@ -54,6 +65,10 @@
     <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Job_Seekers" Type="Int32" />
+    <Property Name="Job_Close" Type="DateTime" Precision="6" />
+    <Property Name="BU_Loaction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Job_Rotational_Roster" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Job_Travel_Requirement" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ADS_Register">
     <Key>
@@ -89,11 +104,21 @@
     <Property Name="Em_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Exp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Job_ID" Type="Int32" />
+    <Property Name="CerWork_File" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityContainer Name="ADS_JOBEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADS_Candidate" EntityType="Self.ADS_Candidate" />
     <EntitySet Name="ADS_Master_Department" EntityType="Self.ADS_Master_Department" />
     <EntitySet Name="ADS_Master_User" EntityType="Self.ADS_Master_User" />
     <EntitySet Name="ADS_PostJob" EntityType="Self.ADS_PostJob" />
     <EntitySet Name="ADS_Register" EntityType="Self.ADS_Register" />
+    <EntitySet Name="SensitiveData" EntityType="ADS_JOBModel.SensitiveData" />
   </EntityContainer>
+  <EntityType Name="SensitiveData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

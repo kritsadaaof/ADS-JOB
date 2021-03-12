@@ -67,7 +67,11 @@ namespace JOB_ADS.Controllers
                                 TR_PJ.Status,
                                 TR_PJ.Experience,
                                 TR_PJ.Salary,
-                                TR_PJ.Gender
+                                TR_PJ.Gender,
+                                TR_PJ.BU_Loaction,
+                                Job_Close= TR_PJ.Job_Close.ToString().Substring(0,16),
+                                TR_PJ.Job_Rotational_Roster,
+                                TR_PJ.Job_Travel_Requirement
                             }).ToList();
                 string jsonlog = new JavaScriptSerializer().Serialize(data);
                 return jsonlog;
@@ -85,7 +89,9 @@ namespace JOB_ADS.Controllers
         [HttpPost]
         public string SavePostEdit(string ID, string JOBTITLE, string JOBLOCATION,
             string JOBREGION, string JOBTYPE, string JOBDES, string JOBRQ,
-            string OPTIONc, string OPTIONa, string OPTIONo, string STATUS, string COMPANY, string EXPERIENCE, string SALARY, string GENDER,string ImgUplode)
+            string OPTIONc, string OPTIONa, string OPTIONo, string STATUS, string COMPANY,
+            string EXPERIENCE, string SALARY, string GENDER,string ImgUplode,
+            string BULOCATION, string DATECLOSE, string ROTATION, string TRAVEL)
         {
             try
             {
@@ -103,6 +109,14 @@ namespace JOB_ADS.Controllers
                 {
                     TR_PJ.JOB_Type = JOBTYPE;
                 }
+                TR_PJ.BU_Loaction = BULOCATION;
+                if (DATECLOSE != " ")
+                {
+                    DateTime oDate = DateTime.Parse(DATECLOSE);
+                    TR_PJ.Job_Close = oDate;
+                }
+                TR_PJ.Job_Rotational_Roster = ROTATION;
+                TR_PJ.Job_Travel_Requirement = TRAVEL;
                 TR_PJ.JOB_Description = JOBDES;
                 TR_PJ.JOB_Requirement = JOBRQ;
                 TR_PJ.Option_Chevron = OPTIONc;

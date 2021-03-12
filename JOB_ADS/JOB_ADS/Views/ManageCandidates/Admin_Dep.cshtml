@@ -1,0 +1,181 @@
+﻿
+@{
+    ViewBag.Title = "JobList";
+}
+
+@Scripts.Render("~/js_Admin_Dep/js")
+
+
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('../Content/images/hero_1.jpg');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h4 class="text-white font-weight-bold">จัดการผู้สมัคร</h4>
+                <div class="custom-breadcrumbs">
+                    <a href="~/Home/Index">Home</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white FontSize"><strong>จำนวนผู้สมัครแยกตามแผนก</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section">
+    <div id="CheckJobList" class="container">
+
+        <div class="row mb-1 justify-content-center" hidden>
+            <div class="col-md-7 text-center">
+                <h2 class="section-title mb-2"></h2>
+                <h5 class="section-title font-weight-bold mb-2"><a style="text-decoration: underline;font-size:22px;">@ViewBag.JobDepart</a></h5>
+
+            </div> 
+        </div>
+
+        <ul class="job-listings">
+
+            @if (ViewBag.JobRegis.Count != 0)
+            {
+                foreach (var PostJob in ViewBag.JobRegis)
+                {
+                    <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+                        <a class="Link" href="JavaScript:void(0);" title="@PostJob.JOB_ID"></a>
+
+
+                        <div class="job-listing-logo">
+                            <img src="~/Content/images/LOGO/@PostJob.Logo_Image" alt="No Logo" class="img-fluid">
+                        </div>
+
+                        <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                                @PostJob.JOB_Title<br />
+                                <strong>บริษัท @PostJob.company</strong><br />
+                                <strong>แผนกที่รับ @PostJob.Depart</strong><br />
+                                <strong>Update @PostJob.JOB_UpdateDate</strong>
+                            </div>
+
+
+                        </div>
+                        <div class="job-listing-logo">
+                            <span class="badge badge-success" style="background-color:#2114c4">จำนวนผู้สมัคร  <i id="@PostJob.ID" style="color:red;font-size:14px"> @PostJob.number</i> คน</span>
+                            <span class="badge badge-success" style="background-color:azure"></span>
+                        </div>
+
+                    </li>
+
+                }
+            }
+            else
+            {
+                <li>
+                    <div class="row mb-1 justify-content-center">
+                        <div class="col-md-7 text-center">
+                            <h2 class="section-title mb-2" hi></h2>
+                            <h5 class="section-title font-weight-bold mb-2"><a style="color:red; text-decoration: underline;font-size:18px;">ไม่มีผู้สมัครตามแผนกนี้</a></h5>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+
+    </div>
+    <div id="Regist" class="container" style="display:none">
+
+        <ul class="job-listings mt-3">
+
+            <li class="text-center"><P id="Title" style="font-size:18px"></P></li>
+            <li class="mb-3">
+
+                <div class="container">
+
+                    <div class="table-responsive row mt-3">
+                        <table class="table  table-hover Text customers " id="tab_logic">
+                            <thead>
+                                <tr>
+                                    <th width="5%">รูปภาพ</th>
+                                    <th width="20%">ชื่อ-นามสกุล</th>
+                                    <th width="10%">ประวัติการทำงาน</th>
+                                    <th width="10%">ประกาศนียบัตร</th>
+                                    <th width="10%">ใบรับรอง</th>
+                                    <th width="10%">สถานะ</th>
+                                    <th width="10%">นัดสัมภาษณ์</th>
+                                    <th width="10%">วัน/เวลาที่นัด</th>
+                                    <th width="10%">ยืนยันผลการสมัคร</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-6" hidden>
+
+                    <div class="col-xl-4 col-sm-2 col-md-3 col-lg-4 mb-4 mb-lg-0">
+
+                    </div>
+                    <div class="col-xl-4 col-sm-8 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                        <div class="row">
+                            <div class="col-6">
+                                <button id="SavePostjob" type="button" class="btn btn-block btn-primary btn-md"><span class="icon-save mr-2"></span>Save Job</button>
+                            </div>
+                            <div class="col-6">
+                                <button id="Clear" type="button" class="btn btn-block btn-light btn-md"><span class="icon-clear_all mr-2"></span>Clear</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 style="font-family:Tahoma" class="modal-title" id="exampleModalLongTitle">กรอกข้อมูลเพื่อยืนยันการนัดสัมภาษณ์ </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row mt-2">
+                    <input id="IDHiddeb" class="form-control" hidden>
+                    <div class="col-md-4">
+                        <div class="text-black form-group" id="data_4">
+                            <i>วันที่นัด</i><i style="color:red">*</i>
+                            <div class="input-group date">
+                                <input id="AppDate" type="text" class="form-control FontSize" placeholder="..../..../....">
+                                <div class="input-group-append input-group-addon"><span class="input-group-text px-3"><i class="icon-calendar"></i></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <i class="text-black" for="fname">เวลา</i><i style="color:red">*</i>
+                        <input type="time" id="AppTime" class="form-control FontSize">
+                    </div>
+
+                    <div class="col-md-4">
+                        <i class="text-black" for="fname"><i>ผู้นัด</i></i><i style="color:red">*</i>
+                        <input type="text" id="UserApp" class="form-control FontSize" placeholder="ผู้นัด">
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-1">
+                        <i class="text-black" for="fname">รายละเอียด</i><i style="color:red">*</i>
+                        <textarea class="form-control FontSize" rows="6" id="Detail" name="" placeholder="กรอกข้อมูลรายละเอียดที่จะแจ้งให้ผู้สมัครทราบ"></textarea>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="OK" class="btn btn-primary" data-dismiss="modal"><span class="icon-save mr-2"></span>ยืนยัน</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="icon-clear_all mr-2"></span>เคลียร์</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
