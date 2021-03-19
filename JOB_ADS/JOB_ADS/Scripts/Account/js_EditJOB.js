@@ -1,4 +1,12 @@
 ﻿$(document).ready(function () {
+    $('#data_4 .input-group.date').datepicker({
+        format: 'dd/mm/yyyy',
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
     document.getElementById('GropEdit').style.display = 'none'; 
     $(".LINK").click(function () {
         document.getElementById('OPhev').checked = false; 
@@ -14,6 +22,10 @@
                 $("#ID").html(pr[0]["ID"]);
                 $("#job-title").val(pr[0]["JOB_Title"]);
                 $("#job-location").val(pr[0]["JOB_Location"]);
+                $("#Bu_Location").val(pr[0]["BU_Loaction"]); 
+                $("#DateCloseDT").html(pr[0]["Job_Close"]);
+                $("#Rotation_Ro").val(pr[0]["Job_Rotational_Roster"]);
+                $("#Travel_RDT").html(pr[0]["Job_Travel_Requirement"]);
                 $("#Experience").val(pr[0]["Experience"]);
                 $("#Salary").val(pr[0]["Salary"]);
                 $("#GenderDT").html(pr[0]["Gender"]);
@@ -82,6 +94,10 @@
                 EXPERIENCE: $("#Experience").val(),
                 SALARY: $("#Salary").val(),
                 GENDER: $("#Gender").val(),
+                BULOCATION: $("#Bu_Location").val(),
+                DATECLOSE: $("#CDate").val() + " " + $("#CTime").val(),
+                ROTATION: $("#Rotation_Ro").val(),
+                TRAVEL: $("#Travel_R").val(),
                 ImgUplode: $("#ImgUplode").val()
 
             }).done(function (data) {

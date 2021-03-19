@@ -6,10 +6,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h1 class="text-white font-weight-bold">Job List</h1>
+                <h1 class="text-white font-weight-bold">Manage Job</h1>
                 <div class="custom-breadcrumbs">
                     <a href="~/Home/Index">Home</a> <span class="mx-2 slash">/</span>
-                    <span class="text-white"><strong>Job List</strong></span>
+                    <a href="#">Job</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>Edit</strong></span>
                 </div>
             </div>
         </div>
@@ -20,8 +21,8 @@
         <div class="row align-items-center mb-5">
             <div class="col-lg-8 mb-4 mb-lg-0">
                 <div class="d-flex align-items-center">
-                    <div>
-                        <h2>Edit Job</h2>
+                    <div> 
+                        <h5 class="section-title font-weight-bold mb-2"><a font-size:22px;">Edit Job</a></h5>
                     </div>
                 </div>
             </div>
@@ -42,8 +43,6 @@
             <i id="ID" hidden></i>
             <div class="col-lg-12">
                 <form class="p-4 p-md-5 border rounded" method="post">
-                    <h4 class="text-black mb-5 border-bottom pb-2">Job Details</h4>
-
                     <div class="form-group" hidden>
                         <label for="company-website-tw d-block">Upload Featured Image</label> <br>
                         <label class="btn btn-primary btn-md btn-file">
@@ -67,16 +66,50 @@
 
 
                     <div class="form-group">
+                        <label for="job-location">BU Location</label><i style="color:red">**</i>
+                        <input type="text" class="form-control" id="Bu_Location" placeholder="Bu Location">
+                    </div>
+                    <div class="form-group">
+                        <label for="job-location">Job Close</label>
+                        <span style="color:seagreen"> [ <i id="DateCloseDT"></i> ]</span>
+                        <div class="col-md-4">
+                            <div class="text-black form-group" id="data_4">
+                                <i>Date</i>
+                                <div class="input-group date">
+                                    <input id="CDate" type="text" class="form-control FontSize" placeholder="..../..../....">
+                                    <div class="input-group-append input-group-addon"><span class="input-group-text px-3"><i class="icon-calendar"></i></span></div>
+                                </div>
+                            </div>
+                            <i class="text-black" for="fname">Time</i>
+                            <input type="time" id="CTime" class="form-control FontSize">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-location">Rotational Roster</label>
+                        <input type="text" class="form-control" id="Rotation_Ro" placeholder="e.g. 5days on duty , 2days off duty">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-location">Travel Requirement</label>
+                        <span style="color:seagreen"> [ <i id="Travel_RDT"></i> ]</span>
+                        <select class="selectpicker border rounded" id="Travel_R" data-style="btn-black" data-width="100%" data-live-search="true" title="Select">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
                         <label for="job-location">Experience</label>
                         <input type="text" class="form-control" id="Experience" placeholder="Experience">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" hidden>
                         <label for="job-location">Salary</label>
                         <input type="text" class="form-control" id="Salary" placeholder="Salary">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" hidden>
                         <label for="job-location">Gender</label>
                         <span style="color:seagreen"> [ <i id="GenderDT"></i> ]</span>
                         <select class="selectpicker border rounded" id="Gender" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Gender">

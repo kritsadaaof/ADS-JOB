@@ -44,5 +44,6 @@ namespace JOB_ADS.Models
         public string Em_Code { get; set; }
         public string Exp { get; set; }
         public Nullable<int> Job_ID { get; set; }
+        public string CerWork_File { get; set; }
     }
 }

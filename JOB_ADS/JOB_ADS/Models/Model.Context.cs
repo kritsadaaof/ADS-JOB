@@ -25,9 +25,12 @@ namespace JOB_ADS.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ADS_Candidate> ADS_Candidate { get; set; }
         public virtual DbSet<ADS_Master_Department> ADS_Master_Department { get; set; }
         public virtual DbSet<ADS_Master_User> ADS_Master_User { get; set; }
         public virtual DbSet<ADS_PostJob> ADS_PostJob { get; set; }
         public virtual DbSet<ADS_Register> ADS_Register { get; set; }
+        public virtual DbSet<SensitiveData> SensitiveData { get; set; }
+        public virtual DbSet<ADS_Master_Email> ADS_Master_Email { get; set; }
     }
 }

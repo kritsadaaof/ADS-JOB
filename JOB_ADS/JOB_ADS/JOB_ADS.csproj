@@ -136,7 +136,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ADS_Candidate.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ADS_Master_Department.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADS_Master_Email.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ADS_Master_User.cs">
@@ -162,6 +168,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SensitiveData.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1574,6 +1583,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\ManageCandidates\js_FindByCandidates.js" />
     <Content Include="Scripts\ManageCandidates\js_FindByDepart.js" />
+    <Content Include="Scripts\ManageCandidates\js_Admin_Dep.js" />
     <Content Include="Scripts\ManageCandidates\js_ManageCandidates.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\PostJob\js_Postjob.js" />
@@ -1602,6 +1612,7 @@
     <Content Include="Views\ManageCandidates\CandidatesDetail.cshtml" />
     <Content Include="Views\Home\RegisterForm.cshtml" />
     <Content Include="Views\Home\JobListChevron.cshtml" />
+    <Content Include="Views\ManageCandidates\Admin_Dep.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

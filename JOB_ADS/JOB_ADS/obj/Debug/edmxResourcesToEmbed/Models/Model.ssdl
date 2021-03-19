@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Entities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="ADS_JOBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ADS_Candidate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Re_ID" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Time" Type="time" Precision="7" />
+    <Property Name="UserApp" Type="nvarchar" MaxLength="255" />
+    <Property Name="Detail" Type="text" />
+  </EntityType>
   <EntityType Name="ADS_Master_Department">
     <Key>
       <PropertyRef Name="ID" />
@@ -10,6 +21,15 @@
     <Property Name="Department_Des" Type="nvarchar" MaxLength="100" />
     <Property Name="Create_Date" Type="datetime2" Precision="7" />
     <Property Name="Update_Date" Type="datetime2" Precision="7" />
+    <Property Name="Status" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ADS_Master_Email">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Pass" Type="nvarchar" MaxLength="100" />
     <Property Name="Status" Type="nvarchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="ADS_Master_User">
@@ -54,6 +74,10 @@
     <Property Name="Salary" Type="nvarchar" MaxLength="50" />
     <Property Name="Gender" Type="nvarchar" MaxLength="50" />
     <Property Name="Job_Seekers" Type="int" />
+    <Property Name="Job_Close" Type="datetime2" Precision="6" />
+    <Property Name="BU_Loaction" Type="nvarchar" MaxLength="50" />
+    <Property Name="Job_Rotational_Roster" Type="nvarchar" MaxLength="50" />
+    <Property Name="Job_Travel_Requirement" Type="nvarchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="ADS_Register">
     <Key>
@@ -89,11 +113,22 @@
     <Property Name="Em_Code" Type="nvarchar" MaxLength="20" />
     <Property Name="Exp" Type="nvarchar" MaxLength="10" />
     <Property Name="Job_ID" Type="int" />
+    <Property Name="CerWork_File" Type="nvarchar" MaxLength="255" />
   </EntityType>
-  <EntityContainer Name="EntitiesStoreContainer">
+  <EntityType Name="SensitiveData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="ntext" />
+  </EntityType>
+  <EntityContainer Name="ADS_JOBModelStoreContainer">
+    <EntitySet Name="ADS_Candidate" EntityType="Self.ADS_Candidate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ADS_Master_Department" EntityType="Self.ADS_Master_Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ADS_Master_Email" EntityType="Self.ADS_Master_Email" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ADS_Master_User" EntityType="Self.ADS_Master_User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ADS_PostJob" EntityType="Self.ADS_PostJob" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ADS_Register" EntityType="Self.ADS_Register" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SensitiveData" EntityType="Self.SensitiveData" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

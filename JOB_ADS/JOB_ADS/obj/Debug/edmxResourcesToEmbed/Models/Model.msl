@@ -1,8 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="EntitiesStoreContainer" CdmEntityContainer="ADS_JOBEntities">
+  <EntityContainerMapping StorageEntityContainer="ADS_JOBModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ADS_Candidate">
+      <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Candidate">
+        <MappingFragment StoreEntitySet="ADS_Candidate">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Re_ID" ColumnName="Re_ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="UserApp" ColumnName="UserApp" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ADS_Master_Department">
-      <EntityTypeMapping TypeName="Entities.ADS_Master_Department">
+      <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Master_Department">
         <MappingFragment StoreEntitySet="ADS_Master_Department">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Department_Code" ColumnName="Department_Code" />
@@ -15,7 +27,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ADS_Master_User">
-      <EntityTypeMapping TypeName="Entities.ADS_Master_User">
+      <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Master_User">
         <MappingFragment StoreEntitySet="ADS_Master_User">
           <ScalarProperty Name="Mem_ID" ColumnName="Mem_ID" />
           <ScalarProperty Name="Mem_Name" ColumnName="Mem_Name" />
@@ -33,8 +45,12 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ADS_PostJob">
-      <EntityTypeMapping TypeName="Entities.ADS_PostJob">
+      <EntityTypeMapping TypeName="ADS_JOBModel.ADS_PostJob">
         <MappingFragment StoreEntitySet="ADS_PostJob">
+          <ScalarProperty Name="Job_Travel_Requirement" ColumnName="Job_Travel_Requirement" />
+          <ScalarProperty Name="Job_Rotational_Roster" ColumnName="Job_Rotational_Roster" />
+          <ScalarProperty Name="BU_Loaction" ColumnName="BU_Loaction" />
+          <ScalarProperty Name="Job_Close" ColumnName="Job_Close" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="JOB_Title" ColumnName="JOB_Title" />
           <ScalarProperty Name="JOB_Location" ColumnName="JOB_Location" />
@@ -60,8 +76,9 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ADS_Register">
-      <EntityTypeMapping TypeName="Entities.ADS_Register">
+      <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Register">
         <MappingFragment StoreEntitySet="ADS_Register">
+          <ScalarProperty Name="CerWork_File" ColumnName="CerWork_File" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Job_Seekers" ColumnName="Job_Seekers" />
           <ScalarProperty Name="Re_Title_EN" ColumnName="Re_Title_EN" />
@@ -92,6 +109,24 @@
           <ScalarProperty Name="Em_Code" ColumnName="Em_Code" />
           <ScalarProperty Name="Exp" ColumnName="Exp" />
           <ScalarProperty Name="Job_ID" ColumnName="Job_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SensitiveData">
+      <EntityTypeMapping TypeName="ADS_JOBModel.SensitiveData">
+        <MappingFragment StoreEntitySet="SensitiveData">
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADS_Master_Email">
+      <EntityTypeMapping TypeName="ADS_JOBModel.ADS_Master_Email">
+        <MappingFragment StoreEntitySet="ADS_Master_Email">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
